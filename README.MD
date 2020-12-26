@@ -1,3 +1,3 @@
 # Capulus  
 ---
-## Cafe  
+Unified cafe app
