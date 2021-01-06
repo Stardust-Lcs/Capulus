@@ -1,5 +1,5 @@
 <?php
 $config = (object) [
     'base_url' => 'http://localhost/',
-    'default_view' => 'home'
+    'default_route' => '/home'
 ];
