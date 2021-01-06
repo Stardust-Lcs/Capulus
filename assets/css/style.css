@@ -3,6 +3,7 @@ body {
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  background-color: #f1e3cb ;
   -moz-osx-font-smoothing: grayscale;
 }
 p {
@@ -174,7 +175,7 @@ header {
 	z-index: 99999;
 	width: 100%;
 	height: 100px;
-	background-color: #f1e3cb;
+	background-color: #f9b384;
 	-webkit-transition: all 0.3s ease-in-out 0s;
     -moz-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
