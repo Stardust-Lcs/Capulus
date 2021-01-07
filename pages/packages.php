@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/search.css">
 
   </head>
 
@@ -94,11 +95,28 @@
     
     <!-- Banner Ends Here -->
 
+
+    <!-- Search Engine -->
+    <div class="inner-form">
+      <div class="col-sm-2 bg-light">
+          <div class="input-field first-wrap">
+            <input id="search" type="text" placeholder="What are you looking for?" />
+          </div>
+          <div class="input-field second-wrap">
+            <input id="location" type="text" placeholder="location" />
+          </div>
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="button">Search</button>
+          </div>
+      </div>
+    </div>
+
+    <!-- Isi -->
     <section class="blog-posts grid-system">
       <div class="container">
         <div class="all-blog-posts">
           <div class="row">
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6 bg-">
               <div class="blog-post">
                 <div class="blog-thumb">
                   <img src="assets/images/product-1-720x480.jpg" alt="">
