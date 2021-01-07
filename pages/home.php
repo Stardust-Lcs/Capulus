@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
 
-  <title>PHPJabbers.com | Free Travel Agency Website Template</title>
+  <title>Capulus | Find Your Favorite Cafe</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home
+              <a class="nav-link" href="/home">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -70,8 +70,14 @@
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a class="nav-link" href="cafe.php">Coba</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
             </li>
           </ul>
         </div>
