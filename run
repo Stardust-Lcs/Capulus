@@ -5,9 +5,12 @@ if (stripos(php_sapi_name(), 'cli') === false) {
     exit();
 }
 
+require_once 'config.php';
+
+$addr_port = explode('/', $config->base_url)[2];
 $cwd = dirname(__FILE__) . '/public';
 
-$process = proc_open('php -S localhost:8000', [STDOUT], $pipes, $cwd, null, ['bypass_shell' => true]);
+$process = proc_open('php -S ' . $addr_port, [STDOUT], $pipes, $cwd, null, ['bypass_shell' => true]);
 
 if (is_resource($process)) {
     proc_close($process);
