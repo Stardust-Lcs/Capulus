@@ -6,10 +6,11 @@ define('__ROOT__', dirname(dirname(__FILE__)) . '/');           // Mendefinisika
 require_once __ROOT__ . 'config.php';                           // Load file-file yang diperlukan
 require_once __ROOT__ . 'routes.php';
 require_once __ROOT__ . 'core/Loader.php';
+require_once __ROOT__ . 'core/Helper.php';
 require_once __ROOT__ . 'core/DBDriver.php';
 require_once __ROOT__ . 'core/Model.php';
-require_once __ROOT__ . "core/View.php";
-require_once __ROOT__ . "core/Response.php";
+require_once __ROOT__ . 'core/View.php';
+require_once __ROOT__ . 'core/Response.php';
 
 //=====================================================//
 //                       DATABASE                      //
@@ -18,7 +19,8 @@ DBDriver::$dsn = $config->db_driver                             // Buat koneksi 
     . ':dbname='
     . $config->db_name
     . ';host='
-    . $config->db_host;
+    . $config->db_host
+    . ';charset=UTF8';
 DBDriver::$username = $config->db_username;
 DBDriver::$pass = $config->db_pass;
 DBDriver::initialize();
@@ -50,5 +52,5 @@ if (count($route) < 2) {                                        // "Home/index",
 // maka, tinggal di load/require sekali aja. 
 require_once __ROOT__ . 'controllers/' . $page . '.php';
 
-$controller = new $page;                                        // PHP emang bisa manggil kelas dan fungsi 
+$controller = new $page();                                        // PHP emang bisa manggil kelas dan fungsi 
 $controller->$function();                                       // pake string nama di sebuah variable, coba aja sendiri pake php interactive, pake command "php -a"

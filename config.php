@@ -6,8 +6,8 @@ $config = (object) [
     //=====================================================//
     //                        DATABASE                     //
     //=====================================================//
-    'db_driver' => 'mysql', // Lihat di PDO::getAvailableDrivers()
-    'db_name' => 'test',
+    'db_driver' => 'mysql', // Lihat di PDO::getAvailableDrivers();
+    'db_name' => 'capulusdb',
     'db_host' => 'localhost',
     'db_username' => 'root',
     'db_pass' => '',

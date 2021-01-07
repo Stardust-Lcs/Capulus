@@ -1,3 +1,10 @@
+<?php
+echo '<pre>';
+for ($i = 0; $i < $count; $i++) {
+  echo $ball . $peepee . "\n";
+}
+echo '</pre>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,6 +1,14 @@
 <?php
+// require_once __ROOT__ . 'models/User.php';
+
 class Home {
     function index() {
-        View::load('home');
+        // $user = new User();
+        // print_r($user->get());
+        View::load('home', [
+            'peepee' => '====D',
+            'ball' => 'B',
+            'count' => 2
+        ]);
     }
 }
