@@ -19,4 +19,14 @@ class Loader {
 
         return $output;
     }
+
+    public static function getConfig($key = 'all') {
+        global $config;
+        $arrConfig = (array) $config;
+        if ($key === 'all') {
+            return $config;
+        }
+
+        return $arrConfig[$key];
+    }
 }
