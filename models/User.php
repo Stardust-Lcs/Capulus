@@ -1,9 +1,18 @@
 <?php
 class User extends Model {
-    protected $columns = [
+    public $id;
+    public $username;
+    public $email;
+    public $fullname;
+    public $password;
+    public $created_at;
+    public $updated_at;
+    public $deleted_at;
+
+    protected $displayColumns = [
         'id',
         'username',
-        'password',
+        'email',
         'fullname',
         'created_at',
         'updated_at',

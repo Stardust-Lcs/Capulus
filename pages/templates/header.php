@@ -57,19 +57,7 @@
             <li class="nav-item">
               <a class="nav-link" href="blog">Blog</a>
             </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
-
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="about">About Us</a>
-                <a class="dropdown-item" href="testimonials">Testimonials</a>
-                <a class="dropdown-item" href="terms">Terms</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact">Contact Us</a>
-            </li>
+            
             <li class="nav-item <?php echo ($active_login ? 'active' : ''); ?>">
               <a class="nav-link" href="/login">Login</a>
             </li>

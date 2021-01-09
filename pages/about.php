@@ -24,57 +24,6 @@
 
   <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
-    <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Travel Agency Website<em>.</em></h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="packages.html">Packages</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
-                  
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item active" href="about.html">About Us</a>
-                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                    <a class="dropdown-item" href="terms.html">Terms</a>
-                  </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="heading-page header-text">
@@ -123,30 +72,56 @@
       </div>
     </section>
 
-    
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="social-icons">
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Behance</a></li>
-              <li><a href="#">Linkedin</a></li>
-              <li><a href="#">Dribbble</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-12">
-            <div class="copyright-text">
-              <p>
-                Copyright © 2020 Company Name
-                | Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
-              </p>
+    <div class="blog-posts">
+    <div class="container">
+      <div class="sidebar-item comments">
+        <h2 class="text-center">Testimonials</h2>
+        <br>
+        <br>
+        <div class="content">
+          <ul>
+            <li>
+              <div class="author-thumb">
+                <img src="assets/images/comment-author-01.jpg" alt="">
+              </div>
+              <div class="right-content">
+                <h4>John Doe<span>10.07.2020</span></h4>
+                <p>Fusce ornare mollis eros. Duis et diam vitae justo fringilla condimentum eu quis leo. Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.</p>
+              </div>
+            </li>
+            <li>
+              <div class="author-thumb">
+                <img src="assets/images/comment-author-02.jpg" alt="">
+              </div>
+              <div class="right-content">
+                <h4>Jane Smith<span>10.07.2020</span></h4>
+                <p>Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.</p>
+              </div>
+            </li>
+            <li>
+              <div class="author-thumb">
+                <img src="assets/images/comment-author-03.jpg" alt="">
+              </div>
+              <div class="right-content">
+                <h4>Kate Blue<span>10.07.2020</span></h4>
+                <p>Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <br>
+        <br>
+        <div class="row justify-content-md-center">
+            <div class="col-md-3">
+              <div class="main-button">
+                <a href="#">Load More</a>
+              </div>
             </div>
           </div>
-        </div>
       </div>
-    </footer>
+    </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
