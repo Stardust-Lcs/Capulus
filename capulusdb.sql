@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2021 at 04:16 AM
+-- Generation Time: Jan 09, 2021 at 04:29 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -102,6 +102,7 @@ CREATE TABLE `tables` (
 
 CREATE TABLE `users` (
   `user_id` char(36) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` text NOT NULL,
   `fullname` text NOT NULL,
@@ -116,8 +117,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `fullname`, `phone`, `is_cafe_owner`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('c74d3752-48fa-4d3d-999c-cc27d1ef4162', 'test', 'test', 'Test', '08123456789', 1, '2021-01-07 02:49:34', '2021-01-07 02:49:34', NULL);
+INSERT INTO `users` (`user_id`, `email`, `username`, `password`, `fullname`, `phone`, `is_cafe_owner`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('c74d3752-48fa-4d3d-999c-cc27d1ef4162', 'example@mail.com', 'test', 'test', 'Test', '08123456789', 1, '2021-01-07 02:49:34', '2021-01-09 03:26:56', NULL);
 
 --
 -- Indexes for dumped tables
@@ -128,23 +129,23 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `fullname`, `phone`, `is
 --
 ALTER TABLE `cafes`
   ADD PRIMARY KEY (`cafe_id`),
-  ADD KEY `cafe_user_id` (`user_id`);
+  ADD KEY `cafes_user_id` (`user_id`);
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_user_id` (`user_id`),
-  ADD KEY `order_cafe_id` (`cafe_id`);
+  ADD KEY `ordesr_cafe_id` (`cafe_id`),
+  ADD KEY `orders_user_id` (`user_id`);
 
 --
 -- Indexes for table `order_items`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`order_item_id`),
-  ADD KEY `orderItem_order_id` (`order_id`),
-  ADD KEY `orderItem_table_id` (`table_id`);
+  ADD KEY `orderItems_order_id` (`order_id`),
+  ADD KEY `orderItems_table_id` (`table_id`);
 
 --
 -- Indexes for table `tables`
@@ -158,7 +159,8 @@ ALTER TABLE `tables`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `unique_users_username` (`username`);
+  ADD UNIQUE KEY `unique_users_username` (`username`),
+  ADD UNIQUE KEY `unique_users_email` (`email`) USING BTREE;
 
 --
 -- Constraints for dumped tables
@@ -168,21 +170,21 @@ ALTER TABLE `users`
 -- Constraints for table `cafes`
 --
 ALTER TABLE `cafes`
-  ADD CONSTRAINT `cafe_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `cafes_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `order_cafe_id` FOREIGN KEY (`cafe_id`) REFERENCES `cafes` (`cafe_id`),
-  ADD CONSTRAINT `order_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `orders_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `ordesr_cafe_id` FOREIGN KEY (`cafe_id`) REFERENCES `cafes` (`cafe_id`);
 
 --
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD CONSTRAINT `orderItem_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-  ADD CONSTRAINT `orderItem_table_id` FOREIGN KEY (`table_id`) REFERENCES `tables` (`table_id`);
+  ADD CONSTRAINT `orderItems_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  ADD CONSTRAINT `orderItems_table_id` FOREIGN KEY (`table_id`) REFERENCES `tables` (`table_id`);
 
 --
 -- Constraints for table `tables`
