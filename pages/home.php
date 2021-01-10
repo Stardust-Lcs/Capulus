@@ -6,7 +6,7 @@
       <div class="owl-banner owl-carousel">
 
         <div class="item">
-          <img src="assets/images2/Kafe 6.jpg" alt="">
+          <img src="assets/images2/Kafe 6.jpg" alt="" width="600" height="400">
           <div class="item-content">
 
             <div class="main-content">
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images2/Kafe 2.jpg" alt="">
+          <img src="assets/images2/Kafe 2.jpg" alt="" width="600" height="400">
           <div class="item-content">
 
             <div class="main-content">
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images2/Kafe 3.jpg" alt="">
+          <img src="assets/images2/Kafe 3.jpg" alt="" width="600" height="400">
           <div class="item-content">
 
             <div class="main-content">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images2/Kafe 4.jpg" alt="">
+          <img src="assets/images2/Kafe 4.jpg" alt="" width="600" height="400">
           <div class="item-content">
 
             <div class="main-content">
@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images2/Kafe 1.jpg" alt="">
+          <img src="assets/images2/Kafe 1.jpg" alt="" width="600" height="400">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
@@ -127,7 +127,7 @@
           <div class="col-md-4 col-sm-6">
             <div class="blog-post">
               <div class="blog-thumb">
-                <img src="assets/images2/Kafe 1.jpg" alt="">
+                <img src="assets/images2/Kafe 1.jpg" alt="" height="200">
               </div>
               <div class="down-content">
                 <span> Rp.10.000 - Rp.15.000 </span>
@@ -140,7 +140,7 @@
                     <div class="col-lg-12">
                       <ul class="post-tags">
                         <li><i class="fa fa-bullseye"></i></li>
-                        <li><a href="package-details.html">View Package</a></li>
+                        <li><a href="packagesDetails">View Package</a></li>
                       </ul>
                     </div>
                   </div>
@@ -151,7 +151,7 @@
           <div class="col-md-4 col-sm-6">
             <div class="blog-post">
               <div class="blog-thumb">
-                <img src="assets/images2/Kafe 2.jpg" alt="">
+                <img src="assets/images2/Kafe 2.jpg" alt="" height="200">
               </div>
               <div class="down-content">
                 <span> Rp.10.000 - Rp.12.000 </span>
@@ -175,7 +175,7 @@
           <div class="col-md-4 col-sm-6">
             <div class="blog-post">
               <div class="blog-thumb">
-                <img src="assets/images2/Kafe 3.jpg" alt="">
+                <img src="assets/images2/Kafe 3.jpg" alt="" height="200">
               </div>
               <div class="down-content">
                 <span> Rp.10.000 - Rp.12.000 </span>
@@ -205,7 +205,7 @@
     <div class="row justify-content-md-center">
             <div class="col-md-3">
               <div class="main-button">
-                <a href="#">Load More</a>
+                <a href="packages">Load More</a>
               </div>
             </div>
           </div>
@@ -244,7 +244,7 @@
           <div class="col-md-4 col-sm-6">
             <div class="blog-post">
               <div class="blog-thumb">
-                <img src="assets/images2/Kafe 1.jpg" alt="">
+                <img src="assets/images2/Kafe 1.jpg" alt="" class="responsive" height="400" height="600">
               </div>
               <div class="down-content">
                 <a href="blog-details.html">
@@ -264,7 +264,7 @@
           <div class="col-md-4 col-sm-6">
             <div class="blog-post">
               <div class="blog-thumb">
-                <img src="assets/images/blog-2-720x480.jpg" alt="">
+                <img src="assets/images/blog-2-720x480.jpg" alt="" class="responsive" width="600" height="400">
               </div>
               <div class="down-content">
                 <a href="blog-details.html">
@@ -284,7 +284,7 @@
           <div class="col-md-4 col-sm-6">
             <div class="blog-post">
               <div class="blog-thumb">
-                <img src="assets/images/blog-3-720x480.jpg" alt="">
+                <img src="assets/images/blog-3-720x480.jpg" alt="" class="responsive" width="600" height="400">
               </div>
               <div class="down-content">
                 <a href="blog-details.html">
@@ -309,7 +309,7 @@
     <div class="row justify-content-md-center">
             <div class="col-md-3">
               <div class="main-button">
-                <a href="#">Load More</a>
+                <a href="blog">Load More</a>
               </div>
             </div>
           </div>
