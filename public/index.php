@@ -5,12 +5,13 @@ define('__ROOT__', dirname(dirname(__FILE__)) . '/');           // Mendefinisika
 //=====================================================//
 require_once __ROOT__ . 'config.php';                           // Load file-file yang diperlukan
 require_once __ROOT__ . 'routes.php';
-require_once __ROOT__ . 'core/Loader.php';
-require_once __ROOT__ . 'core/Helper.php';
-require_once __ROOT__ . 'core/DBDriver.php';
-require_once __ROOT__ . 'core/Model.php';
-require_once __ROOT__ . 'core/View.php';
-require_once __ROOT__ . 'core/Response.php';
+require_once __ROOT__ . 'engine/Loader.php';
+require_once __ROOT__ . 'engine/Helper.php';
+require_once __ROOT__ . 'engine/DBDriver.php';
+require_once __ROOT__ . 'engine/Model.php';
+require_once __ROOT__ . 'engine/View.php';
+require_once __ROOT__ . 'engine/Session.php';
+require_once __ROOT__ . 'engine/Response.php';
 
 //=====================================================//
 //                       DATABASE                      //
@@ -28,7 +29,8 @@ DBDriver::initialize();
 //=====================================================//
 //                         ROUTING                     //
 //=====================================================//
-$request_uri = $_SERVER['REQUEST_URI'];                         // Ambil uri permintaan dari user, contoh: "/about"
+$request_method = $_SERVER['REQUEST_METHOD'];
+$request_uri = $request_method . ' ' . $_SERVER['PATH_INFO']; // Ambil uri permintaan dari user, contoh: "/about"
 
 // lihat https://www.php.net/manual/en/function.explode
 // buat penjelasan tentang fungsi explode()
@@ -48,9 +50,18 @@ if (count($route) < 2) {                                        // "Home/index",
     $function = $route[1];                                      // kalau ada "index"-nya nanti hasilnya ada 2 elemen, "Home" dan "index"
 }
 
+$modelFiles = scandir(__ROOT__ . 'models', SCANDIR_SORT_NONE);  // buat list nama file model di folder /models
+
+if ($modelFiles === false) die;                                 // kalau gagal nge-list mending mati aja.
+
+for ($i = 2; $i < count($modelFiles); $i++) {                   // iterasi listnya mulai dari index 2, karena index 0 dan 1 itu cuma '.' dan '..' alias bukan nama file.
+    require_once __ROOT__ . 'models/' . $modelFiles[$i];        // load it up!
+}
+
 // karena nama controller dan fungsi yang mau dipanggil udah didapat
 // maka, tinggal di load/require sekali aja. 
 require_once __ROOT__ . 'controllers/' . $page . '.php';
 
-$controller = new $page();                                        // PHP emang bisa manggil kelas dan fungsi 
+$session = new Session();                                       // start new session
+$controller = new $page();                                      // PHP emang bisa manggil kelas dan fungsi 
 $controller->$function();                                       // pake string nama di sebuah variable, coba aja sendiri pake php interactive, pake command "php -a"
