@@ -15,6 +15,16 @@ p {
     line-height: 30px;
 }
 
+.responsive {
+    width: 50%;
+    height: 50%;
+}
+
+.responsive2 {
+    height: 30%;
+    width: 50%;
+}
+
 a {
     text-decoration: none!important;
 }
@@ -442,7 +452,7 @@ header .navbar {
 }
 
 .blog-posts .blog-post {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .blog-posts .blog-thumb img {
@@ -452,13 +462,13 @@ header .navbar {
 
 .blog-posts .down-content {
     padding: 40px;
-    border-right: 1px solid #eee;
-    border-left: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-right: 5px solid #eee;
+    border-left: 5px solid #eee;
+    border-bottom: 5px solid #eee;
 }
 
 .blog-posts .down-content-border {
-    border-top: 1px solid #eee;
+    border-top: 5px solid #eee;
 }
 
 .blog-posts .down-content-border p {
@@ -579,6 +589,8 @@ ul.page-numbers li {
     display: inline-block;
     margin: 0px 5px;
 }
+
+
 
 ul.page-numbers li a {
     width: 50px;
@@ -1169,6 +1181,13 @@ footer p a:hover {
 .btn-primary {
     border-color: #f48840;
     background-color: #f48840;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
 }
 
 .btn-primary:focus,
