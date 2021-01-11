@@ -1,7 +1,7 @@
 <?php
 $config = (object) [
     'base_url' => 'http://localhost:8000/',
-    'default_route' => '/home',
+    'default_route' => 'GET /home',
 
     //=====================================================//
     //                        DATABASE                     //

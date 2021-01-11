@@ -30,11 +30,12 @@ DBDriver::initialize();
 //                         ROUTING                     //
 //=====================================================//
 $request_method = $_SERVER['REQUEST_METHOD'];
-$request_uri = $request_method . ' ' . $_SERVER['PATH_INFO']; // Ambil uri permintaan dari user, contoh: "/about"
+$request_uri = $request_method . ' ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Ambil uri permintaan dari user, contoh: "/about"
+
 
 // lihat https://www.php.net/manual/en/function.explode
 // buat penjelasan tentang fungsi explode()
-if ($request_uri === '/') {                                     // jika uri sama dengan "/"
+if ($request_uri === 'GET /') {                                     // jika uri sama dengan "/"
     $route = explode('/', $routes[$config->default_route]);     // maka, ambil rute default dari config
 } else if (isset($routes[$request_uri])) {                      // jika uri ada di routes.php
     $route = explode('/', $routes[$request_uri]);               // maka, ambil rutenya
