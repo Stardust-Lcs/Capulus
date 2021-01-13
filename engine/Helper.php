@@ -36,6 +36,28 @@ if (!function_exists('checkPOSTData')) {
     }
 }
 
+if (!function_exists('redirect')) {
+    function redirect($url, $status_code = 302) {
+        http_response_code($status_code);
+        header('Location: ' . $url);
+    }
+}
+
+if (!function_exists('redirect_back')) {
+    function redirect_back($status_code = 302) {
+        $url = $_REQUEST;
+    }
+}
+
+if (!function_exists('readable_var_dump')) {
+    function readable_var_dump($var, $use_print_r = false) {
+        echo '<pre>';
+        if ($use_print_r) print_r($var);
+        else var_dump($var);
+        echo '</pre>';
+    }
+}
+
 if (!function_exists('GUIDv4')) {
     /**
      * Returns a GUIDv4 string

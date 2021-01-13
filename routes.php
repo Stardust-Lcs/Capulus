@@ -10,6 +10,8 @@ $routes = [
     "GET /testimonials" => "Testimonials/index",
     "GET /terms" => "Terms/index",
 
+    "GET /dashboard" => "Dashboard/index",
+
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
     "POST /user/register" => "Register/userRegister",

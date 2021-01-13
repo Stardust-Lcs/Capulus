@@ -1,4 +1,6 @@
 <?php
+require_once __ROOT__ . 'engine/exceptions/SessionException.php';
+
 class Session {
     public function __construct() {
         session_start();
@@ -6,7 +8,7 @@ class Session {
 
     public function set($name, $value) {
         if (session_status() === PHP_SESSION_DISABLED)
-            throw new Exception('Session is not enabled!');
+            throw new SessionException('Session is not enabled!');
 
         $_SESSION[$name] = $value;
         return $_SESSION;
@@ -16,7 +18,7 @@ class Session {
         if (isset($_SESSION[$name]))
             return $_SESSION[$name];
 
-        throw new Exception("Session $name doesn't exists.");
+        throw new SessionException("Session $name doesn't exists.");
     }
 
     public function getID() {
