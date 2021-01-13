@@ -171,7 +171,7 @@
 
       <div class="content">
         <div class="table-responsive">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+          <table width="100%" border="5" cellspacing="0" cellpadding="0" class="table">
             <thead>
               <tr>
                 <th>Package</th>
@@ -338,13 +338,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="Enter full name" required="">
+                    <label class="form-control" placeholder="Enter full name" id="paymentname" required="">nama</label>
                   </fieldset>
                 </div>
 
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="Enter email address" required="">
+                    <label class="form-control" placeholder="Enter email address" id="paymentemail" required="">email</label>
                   </fieldset>
                 </div>
               </div>
@@ -352,24 +352,31 @@
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="Enter phone" required="">
+                    <input type="text" class="form-control" placeholder="Enter phone" id="paymentnumber" required="">
                   </fieldset>
                 </div>
 
                 <div class="col-md-6">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <fieldset>
-                        <input type="text" class="form-control" placeholder="From date" required="">
-                      </fieldset>
-                    </div>
+                  <fieldset>
+                    <input type="date" class="form-control" placeholder="Enter Date" id="paymentdate" required="">
+                  </fieldset>
+                </div>
+              </div>
 
-                    <div class="col-md-6">
-                      <fieldset>
-                        <input type="text" class="form-control" placeholder="To date" required="">
-                      </fieldset>
-                    </div>
-                  </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <input type="number" class="form-control" placeholder="Many Table" id="paymenttable" required="" min="0">
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <select name="payment" class="form-control" placeholder="Payment" id="paymentmethod">
+                      <option value="ovo">OVO</option>
+                      <option value="gopay">Gopay</option>
+                      <option value="paypal">Paypal</option>
+                    </select>
+                  </fieldset>
                 </div>
               </div>
             </form>
@@ -383,28 +390,6 @@
     </div>
   </div>
 </div>
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Additional Scripts -->
-<script src="assets/js/custom.js"></script>
-<script src="assets/js/owl.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/isotope.js"></script>
-<script src="assets/js/accordions.js"></script>
-
-<script language="text/Javascript">
-  cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-  function clearField(t) { //declaring the array outside of the
-    if (!cleared[t.id]) { // function makes it static and global
-      cleared[t.id] = 1; // you could use true and false, but that's more typing
-      t.value = ''; // with more chance of typos
-      t.style.color = '#fff';
-    }
-  }
-</script>
 
 </body>
 
