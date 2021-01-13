@@ -58,12 +58,33 @@
               <a class="nav-link" href="blog">Blog</a>
             </li>
 
-            <li class="nav-item <?php echo ($active_login ? 'active' : ''); ?>">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item <?php echo ($active_register ? 'active' : ''); ?>">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
+            <?php
+            global $session;
+            $user = $session->get('user');
+            readable_var_dump($user);
+            if ($user !== null) { ?>
+              <li class="nav-item">
+                <div class="dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $user->username; ?>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <?php if ($user->is_cafe_owner) { ?>
+                      <a class="dropdown-item" href="<?php echo baseURL('dashboard') ?>">Dashboard</a>
+                    <?php } ?>
+                    <a class="dropdown-item" href="<?php echo baseURL('settings') ?>">Settings</a>
+                    <a class="dropdown-item" href="<?php echo baseURL('user/logout') ?>">Logout</a>
+                  </div>
+                </div>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item <?php echo ($active_login ? 'active' : ''); ?>">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item <?php echo ($active_register ? 'active' : ''); ?>">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+            <?php } ?>
           </ul>
         </div>
       </div>

@@ -6,7 +6,7 @@ class User extends Model {
     public $fullname;
     public $password;
     public $phone;
-    public $is_cafe_owner;
+    public $is_cafe_owner = 0;
     public $created_at;
     public $updated_at;
     public $deleted_at;

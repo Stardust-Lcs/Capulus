@@ -1,15 +1,35 @@
 <?php
 class Model extends ReflectionClass {
     private $_driver;
-    private $_DBConn;
+    protected $_DBConn;
     protected $table = '';
     protected $displayColumns = array();
+    protected $PDOstatement;
     private $_query;
 
     protected function __construct() {
         parent::__construct($this);
         $this->_driver = DBDriver::getInstance();
         $this->_DBConn = $this->_driver->getDBConn();
+    }
+
+    public function query($query) {
+        $this->_query = $query;
+        $this->PDOstatement = $this->_DBConn->prepare($this->_query);
+        return $this;
+    }
+
+    public function execute($fetch = false, $inputParameters = null) {
+        if ($this->PDOstatement) {
+            $exec = $this->PDOstatement->execute($inputParameters);
+            if ($exec) {
+                if ($fetch) {
+                    return $this->PDOstatement->fetchAll(PDO::FETCH_CLASS, get_class($this));
+                }
+            }
+
+            return $exec;
+        }
     }
 
     public function get($columns = array(), $where = '', $limit = 30) {

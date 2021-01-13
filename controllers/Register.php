@@ -1,10 +1,22 @@
 <?php
 class Register {
     function index() {
+        global $session;
+        $alert = '';
+        $flashData = $session->getFlashData();
+
+        if ($flashData !== null) {
+            if (isset($flashData['alert'])) {
+                $alert = $flashData['alert'];
+                if (is_array($alert)) {
+                    $alert = implode('<br/>', $alert);
+                }
+            }
+        }
         View::load("templates/header", [
             'active_register' => True
         ]);
-        View::load('register');
+        View::load('register', ['alert' => $alert]);
         View::load("templates/footer");
     }
 
@@ -39,7 +51,12 @@ class Register {
         $phone = htmlentities($_POST['phone'], ENT_QUOTES);
 
         $user = new User();
-        $user->id = GUIDv4();
+        $guid = GUIDv4();
+        if (!$guid) {
+            $session->setFlashData(['alert' => 'Failed to create account']);
+            redirect_back();
+        }
+        $user->user_id = $guid;
         $user->username = $username;
         $user->email = $email;
         $user->fullname = $fullname;
