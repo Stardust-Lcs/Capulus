@@ -9,6 +9,8 @@ $routes = [
     "GET /contact" => "Contact/index",
     "GET /testimonials" => "Testimonials/index",
     "GET /terms" => "Terms/index",
+    "GET /blog" => "Blog/index",
+    "GET /paymentDetails" => "PaymentDetails/index",
 
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
