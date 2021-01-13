@@ -32,17 +32,27 @@ DBDriver::initialize();
 $request_method = $_SERVER['REQUEST_METHOD'];
 $request_uri = $request_method . ' ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Ambil uri permintaan dari user, contoh: "/about"
 
-
 // lihat https://www.php.net/manual/en/function.explode
 // buat penjelasan tentang fungsi explode()
-if ($request_uri === 'GET /') {                                     // jika uri sama dengan "/"
-    $route = explode('/', $routes[$config->default_route]);     // maka, ambil rute default dari config
+if ($request_uri === 'GET /') {                                 // jika uri sama dengan "/"
+    $route_param = $routes[$config->default_route];                   // maka, ambil rute default dari config
 } else if (isset($routes[$request_uri])) {                      // jika uri ada di routes.php
-    $route = explode('/', $routes[$request_uri]);               // maka, ambil rutenya
+    $route_param = $routes[$request_uri];                             // maka, ambil rutenya
 } else {                                                        // jika tidak ada
     Response::Error404();                                       // maka, tampilkan 404 
-    exit();                                                     // dan keluar dari program
+    exit(1);                                                     // dan keluar dari program
 }
+
+if (is_string($route_param)) {
+    $route = explode('/', $route_param);
+} else if (is_array($route_param)) {
+    $route = explode('/', $route_param['path']);
+} else {
+    Response::Error(500, 'Route misconfiguration: ' . var_export($route_param, true));
+    exit(1);
+}
+
+if (!$route) exit(1);
 
 $page = $route[0];                                              // contoh string dari routes.php
 if (count($route) < 2) {                                        // "Home/index", artinya controller Home terus execute fungsi index(), lihat di routes.php biar lebih jelas

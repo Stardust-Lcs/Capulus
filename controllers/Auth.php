@@ -5,7 +5,7 @@ class Auth {
         try {
             $session->get('user_id');
             return Response::json(null, 'Already logged in', 400);
-        } catch (Exception $ex) {
+        } catch (SessionException $ex) {
         }
 
         $user = new User();
@@ -18,9 +18,12 @@ class Auth {
 
                 if ($row) {
                     $session->set('user_id', $row[0]->id);
+                    redirect(baseURL(), 200);
                     return Response::json($row, 'Success');
                 } else {
-                    return Response::json(null, 'Failed', 400);
+                    Response::json(null, 'Failed', 400);
+                    redirect(baseURL());
+                    return;
                 }
             }
 
