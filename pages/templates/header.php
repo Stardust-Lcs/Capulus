@@ -12,13 +12,13 @@
   <title>Capulus | Find Your Favorite Cafe</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha512-iQQV+nXtBlmS3XiDrtmL+9/Z+ibux+YuowJjI4rcpO7NYgTzfTOiFNm09kWtfZzEB9fQ6TwOVc8lFVWooFuD/w==" crossorigin="anonymous" />
 
 
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -33,8 +33,8 @@
   </div>
   <!-- ***** Preloader End ***** -->
 
-    <!-- Header -->
-   <header class="">
+  <!-- Header -->
+  <header class="">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="home">
@@ -57,7 +57,7 @@
             <li class="nav-item">
               <a class="nav-link" href="blog">Blog</a>
             </li>
-            
+
             <li class="nav-item <?php echo ($active_login ? 'active' : ''); ?>">
               <a class="nav-link" href="/login">Login</a>
             </li>

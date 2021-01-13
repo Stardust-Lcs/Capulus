@@ -40,12 +40,13 @@ if (!function_exists('redirect')) {
     function redirect($url, $status_code = 302) {
         http_response_code($status_code);
         header('Location: ' . $url);
+        die();
     }
 }
 
 if (!function_exists('redirect_back')) {
     function redirect_back($status_code = 302) {
-        $url = $_REQUEST;
+        redirect($_SERVER['HTTP_REFERER'], $status_code);
     }
 }
 

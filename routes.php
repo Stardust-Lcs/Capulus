@@ -13,6 +13,7 @@ $routes = [
     "GET /paymentDetails" => "PaymentDetails/index",
 
     "GET /dashboard" => "Dashboard/index",
+    "GET /dashboard/tables" => "Tables/dashboard",
 
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",

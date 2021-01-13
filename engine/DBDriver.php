@@ -8,6 +8,7 @@ class DBDriver {
 
     private function __construct($dsn, $username, $pass) {
         $this->_DBConn = new PDO($dsn, $username, $pass);
+        $this->_DBConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public function getDBConn() {

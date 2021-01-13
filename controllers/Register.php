@@ -9,6 +9,7 @@ class Register {
     }
 
     function userRegister() {
+        global $session;
         $validationMessages = [];
         if (!isset($_POST['username'])) {
             $validationMessages['username'] = 'Username is required!';
@@ -19,30 +20,38 @@ class Register {
         if (!isset($_POST['fullname'])) {
             $validationMessages['fullname'] = 'Full name is required!';
         }
+        if (!isset($_POST['phone'])) {
+            $validationMessages['phone'] = 'Phone is required!';
+        }
         if (!isset($_POST['password'])) {
             $validationMessages['password'] = 'Password is required!';
         }
 
         if ($validationMessages) {
-            return Response::json(null, $validationMessages, 400);
+            $session->setFlashData(['alert' => $validationMessages]);
+            redirect_back();
         }
 
         $username = htmlentities($_POST['username'], ENT_QUOTES);
         $email = htmlentities($_POST['email'], ENT_QUOTES);
         $fullname = htmlentities($_POST['fullname'], ENT_QUOTES);
         $password = htmlentities($_POST['password'], ENT_QUOTES);
+        $phone = htmlentities($_POST['phone'], ENT_QUOTES);
 
         $user = new User();
         $user->id = GUIDv4();
         $user->username = $username;
         $user->email = $email;
         $user->fullname = $fullname;
-        $user->password = $password;
+        $user->password = password_hash($password, PASSWORD_ARGON2ID);
+        $user->phone = $phone;
 
         if ($user->insert()) {
-            return Response::json(null, 'Success');
+            $session->setFlashData(['success' => 'Account Created']);
+            redirect_back();
         }
 
-        return Response::json(null, "Failed", 400);
+        $session->setFlashData(['alert' => 'Failed to create account']);
+        redirect_back();
     }
 }

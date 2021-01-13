@@ -13,30 +13,30 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="dashboard.html">
+            <a class="nav-link <?php echo $active_dashboard ? 'active' : ''; ?>" href="<?php echo baseURL('dashboard'); ?>">
               <i class="ni ni-tv-2 text-primary"></i>
               <span class="nav-link-text">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo $active_dashboard ? 'active' : ''; ?>">
             <a class="nav-link" href="icons.html">
               <i class="ni ni-planet text-orange"></i>
-              <span class="nav-link-text">Icons</span>
+              <span class="nav-link-text">Your Cafe</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="map.html">
+          <li class="nav-item <?php echo $active_dashboard ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?php echo baseURL('dashboard/tables'); ?>">
               <i class="ni ni-pin-3 text-primary"></i>
-              <span class="nav-link-text">Google</span>
+              <span class="nav-link-text">Tables</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo $active_dashboard ? 'active' : ''; ?>">
             <a class="nav-link" href="profile.html">
               <i class="ni ni-single-02 text-yellow"></i>
               <span class="nav-link-text">Profile</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo $active_dashboard ? 'active' : ''; ?>">
             <a class="nav-link" href="tables.html">
               <i class="ni ni-bullet-list-67 text-default"></i>
               <span class="nav-link-text">Tables</span>

@@ -6,19 +6,28 @@ class Session {
         session_start();
     }
 
+    public function get($name) {
+        if (isset($_SESSION[$name]))
+            return $_SESSION[$name];
+
+        return null;
+    }
+
     public function set($name, $value) {
         if (session_status() === PHP_SESSION_DISABLED)
             throw new SessionException('Session is not enabled!');
 
         $_SESSION[$name] = $value;
-        return $_SESSION;
     }
 
-    public function get($name) {
-        if (isset($_SESSION[$name]))
-            return $_SESSION[$name];
+    public function getFlashData() {
+        $flashdata = $this->get('flashdata');
+        unset($_SESSION['flashdata']);
+        return $flashdata;
+    }
 
-        throw new SessionException("Session $name doesn't exists.");
+    public function setFlashData($value) {
+        $this->set('flashdata', $value);
     }
 
     public function getID() {
@@ -26,7 +35,7 @@ class Session {
     }
 
     public function destroy() {
-        session_unset();
-        session_destroy();
+        if (!(session_unset() && session_destroy()))
+            throw new SessionException('Can not destroy session. SessionID: ' . $this->getID());
     }
 }

@@ -1,11 +1,18 @@
 <?php
 class Login {
     function index() {
-        readable_var_dump($_GET);
+        global $session;
+        $alert = '';
+        $flashData = $session->getFlashData();
+        if ($flashData !== null) {
+            if (isset($flashData['alert'])) {
+                $alert = $flashData['alert'];
+            }
+        }
         View::load("templates/header", [
             'active_login' => True
         ]);
-        View::load('login');
+        View::load('login', ['alert' => $alert]);
         View::load("templates/footer");
     }
 }

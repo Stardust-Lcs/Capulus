@@ -5,8 +5,15 @@
         <div class="container" style="height: 80vh;">
             <form method="POST" action="<?php echo baseURL('user/login'); ?>">
                 <h1>Login</h1>
-                <p>Please fill in this form to login.</p>
                 <hr>
+                <?php
+                if (!empty($alert)) {
+                ?>
+                    <div class="col-sm-12 text-white bg-warning">
+                        <p><?php echo $alert; ?></p>
+                    </div>
+                <?php
+                } ?>
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-5">
