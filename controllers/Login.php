@@ -5,7 +5,7 @@ class Login {
         $alert = '';
         $flashData = $session->getFlashData();
         $user = $session->get('user');
-        readable_var_dump($user);
+        // readable_var_dump($user);
         if ($user !== null) {
             if ($user->is_cafe_owner) {
                 redirect(baseURL('dashboard'));

@@ -1,6 +1,5 @@
 <?php
-class Cafe extends Model
-{
+class Cafe extends Model {
     public $cafe_id;
     public $name;
     public $address;
@@ -22,8 +21,7 @@ class Cafe extends Model
     ];
     protected $table = 'cafes';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 }
