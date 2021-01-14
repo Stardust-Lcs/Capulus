@@ -1,20 +1,24 @@
 <?php
-class Model {
+class Model
+{
     protected $table = '';
     protected $displayColumns = array();
     protected $PDOstatement;
     private $_query;
 
-    protected function __construct() {
+    protected function __construct()
+    {
     }
 
-    public function query($query) {
+    public function query($query)
+    {
         $this->_query = $query;
         $this->PDOstatement = DBDriver::$DBConn->prepare($this->_query);
         return $this;
     }
 
-    public function execute($fetch = false, $inputParameters = null) {
+    public function execute($fetch = false, $inputParameters = null)
+    {
         if ($this->PDOstatement) {
             $exec = $this->PDOstatement->execute($inputParameters);
             if ($exec) {
@@ -27,7 +31,8 @@ class Model {
         }
     }
 
-    public function get($columns = array(), $where = '', $limit = 30) {
+    public function get($columns = array(), $where = '', $limit = 30)
+    {
         if (empty($columns))
             $columns = $this->displayColumns;
         if (is_array($where))
@@ -49,7 +54,8 @@ class Model {
         return false;
     }
 
-    public function insert(array $data = array()) {
+    public function insert(array $data = array())
+    {
         if (empty($data)) {
             $data = $this->retrieveData();
         }
@@ -70,7 +76,8 @@ class Model {
         return $sth->execute($queryData);
     }
 
-    public function update(array $data, $where) {
+    public function update(array $data, $where)
+    {
         if (empty($data)) {
             $data = $this->retrieveData();
         }
@@ -94,7 +101,8 @@ class Model {
         return $sth->execute($queryData);
     }
 
-    public function delete($where, $soft = false) {
+    public function delete($where, $soft = false)
+    {
         if (is_array($where))
             $where = implode(' ', $where);
 
@@ -107,11 +115,18 @@ class Model {
         return $sth->execute();
     }
 
-    public function getLastQuery() {
+    public function getLastQuery()
+    {
         return $this->_query;
     }
 
-    private function retrieveData() {
+    public function getData($id)
+    {
+        return $this->query("SELECT * FROM cafe WHERE 'cafe_id' = '$id'")->execute(true);
+    }
+
+    private function retrieveData()
+    {
         $data = [];
         $refClass = new ReflectionClass($this);
         $childReflectionProps = $refClass->getProperties(ReflectionProperty::IS_PUBLIC);

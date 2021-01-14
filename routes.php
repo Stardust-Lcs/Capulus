@@ -5,7 +5,7 @@ $routes = [
     "GET /login" => "Login/index",
     "GET /register" => "Register/index",
     "GET /packages" => "Packages/index",
-    "GET /packagesDetails" => "PackagesDetails/index",
+    "GET /cafeDetails" => "CafeDetails/index",
     "GET /contact" => "Contact/index",
     "GET /testimonials" => "Testimonials/index",
     "GET /terms" => "Terms/index",
@@ -19,6 +19,8 @@ $routes = [
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
     "POST /user/register" => "Register/userRegister",
-    "POST /cafe/register" => "RegisterCafe/cafeRegister"
+    "POST /cafe/register" => "RegisterCafe/cafeRegister",
+    "POST /cafe/register/upload" => "Upload/uploadImage",
+    "POST /cafeDetails/order" => "CafeDetails/createOrder",
 
 ];

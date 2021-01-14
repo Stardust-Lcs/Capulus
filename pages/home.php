@@ -5,7 +5,9 @@
     <div class="owl-banner owl-carousel">
 
       <div class="item">
-        <img src="assets/images2/Kafe 6.jpg" alt="" width="600" height="400">
+        <a href="cafeDetails">
+          <img src="assets/images2/Kafe 6.jpg" alt="" width="600" height="400">
+        </a>
         <div class="item-content">
 
           <div class="main-content">
@@ -13,7 +15,7 @@
               <span> $300.00 - $400.00 </span>
             </div>
 
-            <a href="car-details.html">
+            <a href="cafeDetails">
               <h4>Lorem ipsum dolor sit amet.</h4>
             </a>
 
@@ -27,7 +29,9 @@
         </div>
       </div>
       <div class="item">
-        <img src="assets/images2/Kafe 2.jpg" alt="" width="600" height="400">
+        <a href="cafeDetails">
+          <img src="assets/images2/Kafe 2.jpg" alt="" width="600" height="400">
+        </a>
         <div class="item-content">
 
           <div class="main-content">
@@ -35,7 +39,7 @@
               <span> $300.00 - $400.00 </span>
             </div>
 
-            <a href="car-details.html">
+            <a href="cafeDetails">
               <h4>Lorem ipsum dolor sit amet.</h4>
             </a>
 
@@ -49,7 +53,9 @@
         </div>
       </div>
       <div class="item">
-        <img src="assets/images2/Kafe 3.jpg" alt="" width="600" height="400">
+        <a href="cafeDetails">
+          <img src="assets/images2/Kafe 3.jpg" alt="" width="600" height="400">
+        </a>
         <div class="item-content">
 
           <div class="main-content">
@@ -57,7 +63,7 @@
               <span> $300.00 - $400.00 </span>
             </div>
 
-            <a href="car-details.html">
+            <a href="cafeDetails">
               <h4>Lorem ipsum dolor sit amet.</h4>
             </a>
 

@@ -54,9 +54,9 @@
               <a class="nav-link" href="packages">List Cafe</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="blog">Blog</a>
-            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="cafeDetails">Cafe</a>
+            </li> -->
 
             <?php
             global $session;

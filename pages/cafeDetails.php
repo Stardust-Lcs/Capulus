@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+global $session;
+$user = $session->get('user'); ?>
+
 <!-- Page Content -->
 <!-- Banner Starts Here -->
 <div class="heading-page header-text">
@@ -334,17 +338,17 @@
       <div class="modal-body">
         <div class="contact-us">
           <div class="contact-form">
-            <form action="#" id="contact">
+            <form method="POST" action="<?php echo baseURL('cafeDetails/order') ?>" id="order">
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <label class="form-control" placeholder="Enter full name" id="paymentname" required="">nama</label>
+                    <input type="text" class="form-control" placeholder="<?= $user->username; ?>" id="paymentname" readonly></input>
                   </fieldset>
                 </div>
 
                 <div class="col-md-6">
                   <fieldset>
-                    <label class="form-control" placeholder="Enter email address" id="paymentemail" required="">email</label>
+                    <input type="text" class="form-control" placeholder="<?= $user->email; ?>" id="paymentemail" readonly></input>
                   </fieldset>
                 </div>
               </div>
@@ -352,13 +356,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="Enter phone" id="paymentnumber" required="">
+                    <input type="text" class="form-control" placeholder="<?= $user->phone; ?>" id="paymentnumber" readonly></input>
                   </fieldset>
                 </div>
 
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="date" class="form-control" placeholder="Enter Date" id="paymentdate" required="">
+                    <input type="date" class="form-control" placeholder="Enter Date" id="date" required="">
                   </fieldset>
                 </div>
               </div>
@@ -366,7 +370,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="number" class="form-control" placeholder="Many Table" id="paymenttable" required="" min="0">
+                    <input type="number" class="form-control" placeholder="Many Table" id="table" required="" min="1">
                   </fieldset>
                 </div>
                 <div class="col-md-6">
@@ -379,13 +383,13 @@
                   </fieldset>
                 </div>
               </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Send Request</button>
+              </div>
             </form>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Send Request</button>
       </div>
     </div>
   </div>
