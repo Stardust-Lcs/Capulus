@@ -20,6 +20,7 @@ class Response {
     public static function Error($status_code, $message) {
         http_response_code($status_code);
         View::load('errors/generic', ['status_code' => $status_code, 'message' => $message]);
+        die;
     }
 
     public static function Error404() {

@@ -29,4 +29,8 @@ class User extends Model {
     public function __construct() {
         parent::__construct();
     }
+
+    public function getData($id) {
+        return $this->query("SELECT * FROM users WHERE user_id = '$id'")->execute(true);
+    }
 }

@@ -120,10 +120,6 @@ class Model {
         return $this->_query;
     }
 
-    public function getData($id) {
-        return $this->query("SELECT * FROM cafe WHERE 'cafe_id' = '$id'")->execute(true);
-    }
-
     private function retrieveData() {
         $data = [];
         $refClass = new ReflectionClass($this);

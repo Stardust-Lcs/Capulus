@@ -13,8 +13,19 @@ class CafeDetails {
                 }
             }
         }
+
+        if (!isset($_GET['id'])) {
+            Response::Error404();
+        }
+        $cafe = (new Cafe());
+        $cafes = $cafe->getData($_GET['id']);
+        // readable_var_dump($cafe->getLastQuery());
+        if (count($cafes) === 0) {
+            Response::Error404();
+        }
+
         View::load("/templates/header");
-        View::load('cafeDetails');
+        View::load('cafeDetails', ['cafe' => $cafes[0]]);
         View::load("/templates/footer");
     }
 
@@ -28,6 +39,9 @@ class CafeDetails {
         if (!isset($_POST['table'])) {
             $validationMessages['table'] = 'Table is required!';
         }
+        if (!isset($_POST['cafe_id'])) {
+            $validationMessages['cafe_id'] = 'Cafe ID is required!';
+        }
 
         if ($validationMessages) {
             $session->setFlashData(['alert' => $validationMessages]);
@@ -35,6 +49,7 @@ class CafeDetails {
         }
 
         $date = htmlentities($_POST['date'], ENT_QUOTES);
+        $cafe_id = htmlentities($_POST['cafe_id'], ENT_QUOTES);
 
         $order = new Order();
         $guid = GUIDv4();
@@ -45,7 +60,7 @@ class CafeDetails {
         $order->order_id = $guid;
         $order->order_date = $date;
         $order->user_id = $user->user_id;
-        $order->cafe_id = "d181b62f-2412-4c73-b7b2-ae46b52949d6";
+        $order->cafe_id = $cafe_id;
         $insert = $order->insert();
 
         if ($insert) {

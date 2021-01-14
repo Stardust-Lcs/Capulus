@@ -26,4 +26,8 @@ class Cafe extends Model {
     public function __construct() {
         parent::__construct();
     }
+
+    public function getData($id) {
+        return $this->query("SELECT * FROM cafes WHERE cafe_id = '$id'")->execute(true);
+    }
 }

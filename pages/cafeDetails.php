@@ -14,7 +14,7 @@ $user = $session->get('user'); ?>
         <div class="col-lg-12">
           <div class="text-content">
             <h4>Cafe</h4>
-            <h2>(Nama Cafe)</h2>
+            <h2><?php echo $cafe->name; ?></h2>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ $user = $session->get('user'); ?>
           </div>
 
           <div class="content">
-            <p>- Available: Spring <br> - 20 nights <br> - Flight included <br> - 6 Regeneration Road, SE16 2NX, London</p>
+            <p>Available: Spring <br> - <?php echo $cafe->address ?></p>
           </div>
         </div>
 
@@ -366,6 +366,8 @@ $user = $session->get('user'); ?>
                   </fieldset>
                 </div>
               </div>
+
+              <input type="hidden" name="cafe_id" value="<?php echo $cafe->cafe_id ?>">
 
               <div class="row">
                 <div class="col-md-6">
