@@ -11,6 +11,7 @@ $routes = [
     "GET /terms" => "Terms/index",
     "GET /blog" => "Blog/index",
     "GET /paymentDetails" => "PaymentDetails/index",
+    "GET /registerCafe" => "RegisterCafe/index",
 
     "GET /dashboard" => "Dashboard/index",
     "GET /dashboard/tables" => "Tables/dashboard",
