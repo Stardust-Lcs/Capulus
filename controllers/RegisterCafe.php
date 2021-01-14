@@ -71,6 +71,9 @@ class RegisterCafe {
         $cafe->user_id = $session->get('user_id');
 
         $insert = $cafe->insert();
+        $user = (new User())->getData($session->get('user_id'))[0];
+        $user->is_cafe_owner = 1;
+        $user->update();
         readable_var_dump($cafe->getLastQuery());
 
         if (!$insert) {
