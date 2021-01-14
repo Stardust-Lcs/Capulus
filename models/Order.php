@@ -1,6 +1,5 @@
 <?php
-class Order extends Model
-{
+class Order extends Model {
     public $order_id;
     public $order_date;
     public $user_id;
@@ -8,6 +7,8 @@ class Order extends Model
     public $created_at;
     public $updated_at;
     public $deleted_at;
+
+    protected $primaryKey = 'order_id';
 
     protected $displayColumns = [
         'order_id',
@@ -20,8 +21,7 @@ class Order extends Model
     ];
     protected $table = 'orders';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 }

@@ -1,8 +1,6 @@
 <?php
-class CafeDetails
-{
-    function index()
-    {
+class CafeDetails {
+    function index() {
         global $session;
         $alert = '';
         $flashData = $session->getFlashData();
@@ -20,8 +18,7 @@ class CafeDetails
         View::load("/templates/footer");
     }
 
-    function createOrder()
-    {
+    function createOrder() {
         global $session;
         $user = $session->get('user');
         $validationMessages = [];
@@ -48,9 +45,10 @@ class CafeDetails
         $order->order_id = $guid;
         $order->order_date = $date;
         $order->user_id = $user->user_id;
-        $order->cafe_id = "c74d3752-48fa-4d3d-999c-cc27d1ef1897";
+        $order->cafe_id = "d181b62f-2412-4c73-b7b2-ae46b52949d6";
+        $insert = $order->insert();
 
-        if ($order->insert()) {
+        if ($insert) {
             $session->setFlashData(['success' => 'Order Created']);
             redirect_back();
         }

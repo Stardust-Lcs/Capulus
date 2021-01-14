@@ -362,7 +362,7 @@ $user = $session->get('user'); ?>
 
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="date" class="form-control" placeholder="Enter Date" id="date" required="">
+                    <input type="date" class="form-control" placeholder="Enter Date" name="date" id="date" required="">
                   </fieldset>
                 </div>
               </div>
@@ -370,7 +370,7 @@ $user = $session->get('user'); ?>
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="number" class="form-control" placeholder="Many Table" id="table" required="" min="1">
+                    <input type="number" class="form-control" placeholder="Many Table" name="table" id="table" required="" min="1">
                   </fieldset>
                 </div>
                 <div class="col-md-6">
