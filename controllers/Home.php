@@ -1,10 +1,10 @@
 <?php
-// require_once __ROOT__ . 'models/User.php';
-
 class Home {
     function index() {
-        // $user = new User();
-        // print_r($user->get());
+        $cafes = (new Cafe())->get();
+        $cafes[0]->name = "uoyoyo";
+        $cafes[0]->update();
+
         View::load("templates/header", [
             'active_home' => TRUE
         ]);

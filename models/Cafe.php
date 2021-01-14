@@ -9,6 +9,8 @@ class Cafe extends Model {
     public $updated_at;
     public $deleted_at;
 
+    protected $primaryKey = 'cafe_id';
+
     protected $displayColumns = [
         'cafe_id',
         'name',

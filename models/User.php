@@ -11,6 +11,8 @@ class User extends Model {
     public $updated_at;
     public $deleted_at;
 
+    protected $primaryKey = 'user_id';
+
     protected $displayColumns = [
         'user_id',
         'username',

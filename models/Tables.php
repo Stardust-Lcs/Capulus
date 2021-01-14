@@ -4,6 +4,8 @@ class Tables extends Model {
     public int $table_available = 0;
     public $cafe_id;
 
+    protected $primaryKey = 'table_id';
+
     protected $displayColumns = [
         'table_id',
         'table_available',
