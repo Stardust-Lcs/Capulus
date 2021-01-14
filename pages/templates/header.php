@@ -61,7 +61,6 @@
             <?php
             global $session;
             $user = $session->get('user');
-            readable_var_dump($user);
             if ($user !== null) { ?>
               <li class="nav-item">
                 <div class="dropdown">

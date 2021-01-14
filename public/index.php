@@ -74,5 +74,10 @@ for ($i = 2; $i < count($modelFiles); $i++) {                   // iterasi listn
 require_once __ROOT__ . 'controllers/' . $page . '.php';
 
 $session = new Session();                                       // start new session
-$controller = new $page();                                      // PHP emang bisa manggil kelas dan fungsi 
-$controller->$function();                                       // pake string nama di sebuah variable, coba aja sendiri pake php interactive, pake command "php -a"
+try {
+    $controller = new $page();                                  // PHP emang bisa manggil kelas dan fungsi 
+    $controller->$function();                                   // pake string nama di sebuah variable, coba aja sendiri pake php interactive, pake command "php -a"
+} catch (\Throwable $th) {
+    $message = $config->environment === 'PRODUCTION' ? 'Sorry, something went wrong :(' : $th->__toString();
+    Response::Error(500, $message);
+}

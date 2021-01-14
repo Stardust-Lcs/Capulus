@@ -1,21 +1,16 @@
 <?php
-class Model extends ReflectionClass {
-    private $_driver;
-    protected $_DBConn;
+class Model {
     protected $table = '';
     protected $displayColumns = array();
     protected $PDOstatement;
     private $_query;
 
     protected function __construct() {
-        parent::__construct($this);
-        $this->_driver = DBDriver::getInstance();
-        $this->_DBConn = $this->_driver->getDBConn();
     }
 
     public function query($query) {
         $this->_query = $query;
-        $this->PDOstatement = $this->_DBConn->prepare($this->_query);
+        $this->PDOstatement = DBDriver::$DBConn->prepare($this->_query);
         return $this;
     }
 
@@ -46,7 +41,7 @@ class Model extends ReflectionClass {
             $this->_query = "SELECT $columns FROM $this->table LIMIT $limit;";
         }
 
-        $sth = $this->_DBConn->prepare($this->_query);
+        $sth = DBDriver::$DBConn->prepare($this->_query);
         if ($sth->execute()) {
             return $sth->fetchAll(PDO::FETCH_CLASS, get_class($this));
         }
@@ -71,7 +66,7 @@ class Model extends ReflectionClass {
 
         $this->_query = sprintf($this->_query, trim($columnsString, ', '), trim($valuesString, ', '));
 
-        $sth = $this->_DBConn->prepare($this->_query);
+        $sth = DBDriver::$DBConn->prepare($this->_query);
         return $sth->execute($queryData);
     }
 
@@ -95,7 +90,7 @@ class Model extends ReflectionClass {
 
         $this->_query = sprintf($this->_query, trim($columns, ', '), $where);
 
-        $sth = $this->_DBConn->prepare($this->_query);
+        $sth = DBDriver::$DBConn->prepare($this->_query);
         return $sth->execute($queryData);
     }
 
@@ -108,7 +103,7 @@ class Model extends ReflectionClass {
         }
 
         $this->_query = "DELETE FROM $this->table WHERE $where";
-        $sth = $this->_DBConn->prepare($this->_query);
+        $sth = DBDriver::$DBConn->prepare($this->_query);
         return $sth->execute();
     }
 
@@ -118,7 +113,8 @@ class Model extends ReflectionClass {
 
     private function retrieveData() {
         $data = [];
-        $childReflectionProps = $this->getProperties(ReflectionProperty::IS_PUBLIC);
+        $refClass = new ReflectionClass($this);
+        $childReflectionProps = $refClass->getProperties(ReflectionProperty::IS_PUBLIC);
         unset($childReflectionProps[array_key_last($childReflectionProps)]);
 
         foreach ($childReflectionProps as $reflectionProp) {

@@ -1,29 +1,16 @@
 <?php
 class DBDriver {
-    private $_DBConn;
-    private static $_instance = NULL;
+    public static $DBConn;
     public static $dsn;
     public static $username;
     public static $pass;
 
-    private function __construct($dsn, $username, $pass) {
-        $this->_DBConn = new PDO($dsn, $username, $pass);
-        $this->_DBConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-
-    public function getDBConn() {
-        return $this->_DBConn;
+    public static function getDBConn() {
+        return self::$DBConn;
     }
 
     public static function initialize() {
-        self::$_instance = new DBDriver(self::$dsn, self::$username, self::$pass);
-    }
-
-    public static function getInstance(): \DBDriver {
-        if (self::$_instance === NULL) {
-            self::initialize();
-        }
-
-        return self::$_instance;
+        self::$DBConn = new PDO(self::$dsn, self::$username, self::$pass);
+        self::$DBConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 }

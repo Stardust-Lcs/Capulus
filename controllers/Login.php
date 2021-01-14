@@ -4,9 +4,9 @@ class Login {
         global $session;
         $alert = '';
         $flashData = $session->getFlashData();
-
-        if ($session->get('user') !== null) {
-            $user = $session->get('user');
+        $user = $session->get('user');
+        readable_var_dump($user);
+        if ($user !== null) {
             if ($user->is_cafe_owner) {
                 redirect(baseURL('dashboard'));
             }
@@ -22,7 +22,7 @@ class Login {
             'active_login' => True
         ]);
         View::load('login', [
-            'alert' => $alert
+            'alert' => $alert,
         ]);
         View::load("templates/footer");
     }

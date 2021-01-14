@@ -35,7 +35,13 @@ class Session {
     }
 
     public function destroy() {
-        if (!(session_unset() && session_destroy()))
+        $result = session_unset() && session_destroy();
+        session_write_close();
+        setcookie(session_name(), '', 0, '/');
+        if (!$result) {
             throw new SessionException('Can not destroy session. SessionID: ' . $this->getID());
+        }
+
+        return $result;
     }
 }

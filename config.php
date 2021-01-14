@@ -1,5 +1,6 @@
 <?php
 $config = (object) [
+    'environment' => 'DEVELOPMENT',
     'base_url' => 'http://localhost:8000/',
     'default_route' => 'GET /home',
 
