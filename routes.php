@@ -19,5 +19,7 @@ $routes = [
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
     "POST /user/register" => "Register/userRegister",
+    "POST /cafe/register" => "RegisterCafe/cafeRegister",
+    "POST /cafe/register/upload" => "Upload/uploadImage",
 
 ];

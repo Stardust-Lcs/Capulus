@@ -71,7 +71,7 @@
                     <?php if ($user->is_cafe_owner) { ?>
                       <a class="dropdown-item" href="<?php echo baseURL('dashboard') ?>">Dashboard</a>
                     <?php } ?>
-                    <a class="dropdown-item" href="<?php echo baseURL('settings') ?>">Settings</a>
+                    <a class="dropdown-item" href="<?php echo baseURL('registerCafe') ?>">Register Cafe</a>
                     <a class="dropdown-item" href="<?php echo baseURL('user/logout') ?>">Logout</a>
                   </div>
                 </div>
