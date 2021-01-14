@@ -11,6 +11,7 @@ $routes = [
     "GET /terms" => "Terms/index",
     "GET /blog" => "Blog/index",
     "GET /paymentDetails" => "PaymentDetails/index",
+    "GET /registerCafe" => "RegisterCafe/index",
 
     "GET /dashboard" => "Dashboard/index",
     "GET /dashboard/tables" => "Tables/dashboard",
@@ -18,5 +19,7 @@ $routes = [
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
     "POST /user/register" => "Register/userRegister",
+    "POST /cafe/register" => "RegisterCafe/cafeRegister",
+    "POST /cafe/register/upload" => "Upload/uploadImage",
 
 ];
