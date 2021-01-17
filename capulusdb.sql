@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2021 at 08:19 AM
+-- Generation Time: Jan 17, 2021 at 09:14 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -80,6 +80,7 @@ INSERT INTO `orders` (`order_id`, `order_date`, `user_id`, `cafe_id`, `created_a
 CREATE TABLE `order_items` (
   `order_item_id` char(36) CHARACTER SET utf8 NOT NULL,
   `quantity` int(5) NOT NULL,
+  `total_price` int(15) NOT NULL,
   `order_id` char(36) CHARACTER SET utf8 NOT NULL,
   `table_id` char(36) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
