@@ -1,5 +1,5 @@
 <?php
-class Tables {
+class TablesController {
     function dashboard() {
         global $session;
         if ($session->get('user_id') === null) {

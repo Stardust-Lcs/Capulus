@@ -14,7 +14,7 @@ $routes = [
     "GET /registerCafe" => "RegisterCafe/index",
 
     "GET /dashboard" => "Dashboard/index",
-    "GET /dashboard/tables" => "Tables/dashboard",
+    "GET /dashboard/tables" => "TablesController/dashboard",
 
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
