@@ -28,6 +28,10 @@ class Cafe extends Model {
     }
 
     public function getData($id) {
-        return $this->query("SELECT * FROM cafes WHERE cafe_id = '$id'")->execute(true);
+        return $this->query("SELECT cafes.*, users.fullname, users.email, users.phone FROM cafes INNER JOIN users ON cafes.user_id = users.user_id WHERE cafe_id = '$id'")->execute(true, stdClass::class);
+    }
+
+    public function checkId($id) {
+        return $this->query("SELECT 1 FROM cafes WHERE cafe_id = '$id'")->execute();
     }
 }

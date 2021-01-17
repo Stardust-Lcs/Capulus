@@ -15,6 +15,7 @@ $routes = [
 
     "GET /dashboard" => "Dashboard/index",
     "GET /dashboard/tables" => "TablesController/dashboard",
+    "GET /dashboard/your-cafe" => "YourCafe/dashboard",
 
     "POST /user/login" => "Auth/userLogin",
     "GET /user/logout" => "Auth/userLogout",
@@ -22,5 +23,6 @@ $routes = [
     "POST /cafe/register" => "RegisterCafe/cafeRegister",
     "POST /cafe/register/upload" => "Upload/uploadImage",
     "POST /cafeDetails/order" => "CafeDetails/createOrder",
-
+    "POST /cafe/edit" => "YourCafe/edit",
+    "POST /table/add" => "TablesController/add",
 ];

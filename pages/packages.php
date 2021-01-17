@@ -23,150 +23,44 @@
   <div class="container">
     <div class="all-blog-posts">
       <div class="row">
-        <div class="col-md-4 col-sm-6 bg-">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images/product-1-720x480.jpg" alt="">
-            </div>
-            <div class="down-content">
-              <span> $300.00 - $400.00 </span>
-              <a href="package-details.html">
-                <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-              </a>
-              <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="package-details.html">View Package</a></li>
-                    </ul>
+        <?php
+        if (count($rows) === 0) {
+        ?>
+          <div class="col-sm-12 text-center">
+            <p>Belum ada data.</p>
+          </div>
+          <?php
+        } else {
+          foreach ($rows as $row) { ?>
+            <div class="col-md-4 col-sm-6 bg-">
+              <div class="blog-post">
+                <div class="blog-thumb">
+                  <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                </div>
+                <div class="down-content">
+                  <span> <?php //echo $row->min_price . ' - ' . $row->max_price; 
+                          ?> </span>
+                  <a href="<?php echo baseURL("cafeDetails?id=$row->cafe_id"); ?>">
+                    <h4><?php echo $row->name ?></h4>
+                  </a>
+                  <p><?php echo $row->address ?></p>
+                  <div class="post-options">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <ul class="post-tags">
+                          <li><i class="fa fa-bullseye"></i></li>
+                          <li><a href="<?php echo baseURL("cafeDetails?id=$row->cafe_id"); ?>">View Package</a></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images/product-2-720x480.jpg" alt="">
-            </div>
-            <div class="down-content">
-              <span> $300.00 - $400.00 </span>
-              <a href="package-details.html">
-                <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-              </a>
-              <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="package-details.html">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images/product-3-720x480.jpg" alt="">
-            </div>
-            <div class="down-content">
-              <span> $300.00 - $400.00 </span>
-              <a href="package-details.html">
-                <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-              </a>
-              <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="package-details.html">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images/product-4-720x480.jpg" alt="">
-            </div>
-            <div class="down-content">
-              <span> $300.00 - $400.00 </span>
-              <a href="package-details.html">
-                <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-              </a>
-              <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="package-details.html">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images/product-5-720x480.jpg" alt="">
-            </div>
-            <div class="down-content">
-              <span> $300.00 - $400.00 </span>
-              <a href="package-details.html">
-                <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-              </a>
-              <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="package-details.html">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images/product-6-720x480.jpg" alt="">
-            </div>
-            <div class="down-content">
-              <span> $300.00 - $400.00 </span>
-              <a href="package-details.html">
-                <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-              </a>
-              <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="package-details.html">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php
+          }
+        }
+        ?>
       </div>
     </div>
   </div>

@@ -35,15 +35,15 @@
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
               <?php View::load('templates/dashboard/breadcrumbs', [
-                'title' => 'Tables',
+                'title' => 'Cafes',
                 'breadcrumbs' => [
-                  ['url' => baseURL('dashboard/tables'), 'name' => 'Tables']
+                  ['url' => baseURL('dashboard/cafes'), 'name' => 'Cafes']
                 ]
               ]); ?>
             </div>
             <div class="col-lg-6 col-5 text-right">
               <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#modal-add">
-                Add new table
+                Add new cafe
               </button>
             </div>
           </div>
@@ -57,18 +57,7 @@
         <div class="col">
           <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
-              <?php
-              if ($alert || $success) { ?>
-                <div class="alert alert-<?php echo $alert ? 'warning' : 'success'; ?> alert-dismissible fade show" role="alert">
-                  <span class="alert-icon"><i class="fas fa-exclamation-triangle"></i></span>
-                  <span class="alert-text"><?php echo $alert ? $alert : $success; ?></span>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <?php
-              } ?>
-              <h3 class="text-white mb-0"><?php echo $cafeName; ?> tables</h3>
+              <h3 class="text-white mb-0">Your Cafes</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-dark table-flush">
@@ -76,23 +65,23 @@
                   <tr>
                     <th scope="col" class="sort" data-sort="name">No</th>
                     <th scope="col" class="sort" data-sort="budget">Name</th>
-                    <th scope="col" class="sort" data-sort="status">Price</th>
-                    <th scope="col" class="sort" data-sort="status">Total Table</th>
+                    <th scope="col" class="sort" data-sort="budget">Address</th>
+                    <th scope="col" class="sort" data-sort="budget">Photo</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody class="list">
                   <?php
-                  if (count($tables) === 0) { ?>
+                  if (count($cafes) === 0) { ?>
                     <tr>
                       <td colspan="4">
-                        No tables
+                        No Cafes
                       </td>
                     </tr>
                     <?php
                   } else {
                     $i = 1;
-                    foreach ($tables as $table) { ?>
+                    foreach ($cafes as $cafe) { ?>
                       <tr>
                         <td>
                           <?php echo $i++; ?>
@@ -100,17 +89,30 @@
                         <th scope="row">
                           <div class="media align-items-center">
                             <div class="media-body">
-                              <span class="name mb-0 text-sm"><?php echo $table->table_name ?></span>
+                              <span class="name mb-0 text-sm"><?php echo $cafe->name ?></span>
                             </div>
                           </div>
                         </th>
                         <td>
-                          Rp<?php echo $table->price ?>
+                          <div class="media align-items-center">
+                            <div class="media-body">
+                              <span class="name mb-0 text-sm"><?php echo $cafe->address ?></span>
+                            </div>
+                          </div>
                         </td>
                         <td>
-                          <?php echo $table->total_table ?>
+                          <div class="media align-items-center">
+                            <div class="media-body">
+                              <img src="<?php echo $cafe->photo ?>" width="100%" />
+                            </div>
+                          </div>
                         </td>
                         <td class="text-right">
+                          <a href="<?php echo baseURL("dashboard/tables?id=$cafe->cafe_id"); ?>">
+                            <button type="button" class="btn btn-sm btn-neutral">
+                              See Tables
+                            </button>
+                          </a>
                           <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#modal-default">
                             Edit
                           </button>
@@ -159,15 +161,15 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h6 class="modal-title" id="modal-title-add">Add new table</h6>
+              <h6 class="modal-title" id="modal-title-add">Add new cafe</h6>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <form action="<?php echo baseURL("table/add"); ?>" method="POST">
-              <div class="modal-body">
 
-                <input type="hidden" name="cafe_id" value="<?php echo $cafeId; ?>">
+            <div class="modal-body">
+
+              <form>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
@@ -192,12 +194,15 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
 
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Add</button>
-              </div>
-            </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Add</button>
+              <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+
           </div>
         </div>
       </div>

@@ -17,15 +17,18 @@ class CafeDetails {
         if (!isset($_GET['id'])) {
             Response::Error404();
         }
-        $cafe = (new Cafe());
-        $cafes = $cafe->getData($_GET['id']);
+        $cafes = (new Cafe())->getData($_GET['id']);
         // readable_var_dump($cafe->getLastQuery());
         if (count($cafes) === 0) {
             Response::Error404();
         }
+        $cafe = $cafes[0];
 
+        $tables = (new Table())->get([], "tables.cafe_id = '$cafe->cafe_id'");
+        $cafe->tables = $tables;
+        readable_var_dump($cafe);
         View::load("/templates/header");
-        View::load('cafeDetails', ['cafe' => $cafes[0]]);
+        View::load('cafeDetails', ['cafe' => $cafe]);
         View::load("/templates/footer");
     }
 

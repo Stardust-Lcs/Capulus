@@ -1,92 +1,107 @@
 <?php
-class RegisterCafe {
-    function index() {
+class YourCafe {
+    function dashboard() {
         global $session;
-        $alert = '';
-        $flashData = $session->getFlashData();
-
         if ($session->get('user_id') === null) {
             redirect(baseURL('login'));
         }
 
-        if ($flashData !== null) {
-            if (isset($flashData['alert'])) {
-                $alert = $flashData['alert'];
-                if (is_array($alert)) {
+        $notif = $session->getFlashData();
+        $alert = '';
+        $success = '';
+        if ($notif !== null) {
+            if (isset($notif['alert'])) {
+                $alert =  $notif['alert'];
+                if (is_array($notif['alert'])) {
                     $alert = implode('<br/>', $alert);
                 }
             }
+
+            if (isset($notif['success'])) {
+                $success = $notif['success'];
+                if (is_array($notif['success'])) {
+                    $success = implode('<br/>', $success);
+                }
+            }
         }
-        View::load('/templates/header');
-        View::load('registerCafe', [
+
+        $cafe = (new Cafe())->get([], "user_id = '" . $session->get('user_id') . "'", 1);
+
+        if (!$cafe) {
+            redirect(baseURL('registerCafe'));
+        }
+
+        View::load('dashboard/your-cafe', [
             'alert' => $alert,
+            'success' => $success,
+            'username' => $session->get('username'),
+            'cafe' => $cafe[0],
         ]);
-        View::load('/templates/footer');
     }
 
-    function cafeRegister() {
+    function edit() {
         global $session;
         if ($session->get('user_id') === null) {
             redirect(baseURL('login'));
         }
-
         $validationMessages = [];
         if (empty($_POST)) redirect_back();
+        if (!isset($_POST['cafe_id'])) {
+            $validationMessages['cafe_id'] = 'Cafe ID is required!';
+        }
         if (!isset($_POST['name'])) {
             $validationMessages['name'] = 'Name is required!';
         }
         if (!isset($_POST['address'])) {
             $validationMessages['address'] = 'Address is required!';
         }
-        if (!isset($_FILES['photo'])) {
-            $validationMessages['photo'] = "Photo is required";
-        } else {
-            $path = $this->uploadImage('photo');
 
-            if (!$path) {
-                $validationMessages['photo'] = "Sorry, we're unable to upload your photo.";
+        $path = '';
+
+        if (isset($_FILES['photo'])) {
+            if ($_FILES['photo']['size'] > 0) {
+                readable_var_dump($_FILES['photo']);
+                $path = $this->uploadImage('photo');
+
+                if (!$path) {
+                    $validationMessages['photo'] = "Sorry, we're unable to upload your photo.";
+                }
+
+                unset($_FILES['photo']);
             }
-
-            unset($_FILES['photo']);
         }
 
         if ($validationMessages) {
             $session->setFlashData(['alert' => $validationMessages]);
-            // return;
-            redirect_back();
+            return;
+            // redirect_back();
         }
 
+        $cafeId = htmlentities($_POST['cafe_id'], ENT_QUOTES);
         $name = htmlentities($_POST['name'], ENT_QUOTES);
         $address = htmlentities($_POST['address'], ENT_QUOTES);
         $photoPath = htmlentities($path, ENT_QUOTES);
 
-        $guid = GUIDv4();
-        if (!$guid) {
-            $session->setFlashData(['alert' => 'Failed to create cafe']);
-            redirect_back();
-        }
-
         $cafe = new Cafe();
-        $cafe->cafe_id = $guid;
+        $cafe->cafe_id = $cafeId;
         $cafe->name = $name;
         $cafe->address = $address;
-        $cafe->photo = $photoPath;
-        $cafe->user_id = $session->get('user_id');
+        if ($path) {
+            $cafe->photo = $photoPath;
+        }
 
-        $insert = $cafe->insert();
-        $user = (new User())->getData($session->get('user_id'))[0];
-        $user->is_cafe_owner = 1;
-        $user->update();
-        readable_var_dump($cafe->getLastQuery());
-
-        if (!$insert) {
-            $session->setFlashData(['alert' => 'Failed to create cafe']);
+        $update = $cafe->update();
+        // readable_var_dump($update);
+        if (!$update) {
+            $session->setFlashData(['alert' => 'Failed to update cafe']);
             redirect_back();
         }
 
-        $session->setFlashData(['alert' => 'Cafe created']);
+        // readable_var_dump($cafe->getLastQuery());
+        $session->setFlashData(['success' => 'Cafe updated']);
         redirect_back();
     }
+
 
     function uploadImage($field) {
         $targetDir = "uploads/";

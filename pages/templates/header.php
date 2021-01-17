@@ -60,8 +60,9 @@
 
             <?php
             global $session;
-            $user = $session->get('user');
-            if ($user !== null) { ?>
+            $user_id = $session->get('user_id');
+            if ($user_id !== null) {
+              $user = (new User())->getData($user_id)[0]; ?>
               <li class="nav-item">
                 <div class="dropdown">
                   <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

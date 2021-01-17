@@ -6,7 +6,7 @@ class Model {
     protected $primaryKey = 'id';
     private $_query;
 
-    protected function __construct() {
+    public function __construct() {
     }
 
     public function query($query) {
@@ -15,12 +15,13 @@ class Model {
         return $this;
     }
 
-    public function execute($fetch = false, $inputParameters = null) {
+    public function execute($fetch = false, $class = null, $inputParameters = null) {
+        if ($class === null) $class = get_class($this);
         if ($this->PDOstatement) {
             $exec = $this->PDOstatement->execute($inputParameters);
             if ($exec) {
                 if ($fetch) {
-                    return $this->PDOstatement->fetchAll(PDO::FETCH_CLASS, get_class($this));
+                    return $this->PDOstatement->fetchAll(PDO::FETCH_CLASS, $class);
                 }
             }
 
@@ -66,7 +67,7 @@ class Model {
         }
 
         $this->_query = sprintf($this->_query, trim($columnsString, ', '), trim($valuesString, ', '));
-
+        // readable_var_dump($data);
         $sth = DBDriver::$DBConn->prepare($this->_query);
         return $sth->execute($queryData);
     }
@@ -89,12 +90,14 @@ class Model {
         $queryData = [];
         $data['updated_at'] = date("Y-m-d H:i:s");
         foreach ($data as $key => $value) {
-            $columns .= "$key = ?, ";
-            array_push($queryData, $value);
+            if ($value) {
+                $columns .= "$key = ?, ";
+                array_push($queryData, $value);
+            }
         }
 
         $this->_query = sprintf($this->_query, trim($columns, ', '), $where);
-
+        // readable_var_dump($this->_query);
         $sth = DBDriver::$DBConn->prepare($this->_query);
         return $sth->execute($queryData);
     }
@@ -124,7 +127,6 @@ class Model {
         $data = [];
         $refClass = new ReflectionClass($this);
         $childReflectionProps = $refClass->getProperties(ReflectionProperty::IS_PUBLIC);
-        unset($childReflectionProps[array_key_last($childReflectionProps)]);
 
         foreach ($childReflectionProps as $reflectionProp) {
             $data[$reflectionProp->getName()] = $reflectionProp->getValue($this);

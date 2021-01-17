@@ -29,52 +29,8 @@ $user = $session->get('user'); ?>
     <div class="row">
       <div class="col-md-7">
         <div>
-          <img src="assets/images/product-1-720x480.jpg" alt="" class="img-fluid wc-image">
+          <img src="<?php echo $cafe->photo ?>" alt="<?php echo $cafe->name ?>" class="img-fluid wc-image">
         </div>
-
-        <br>
-
-        <div class="row">
-          <div class="col-sm-4 col-6">
-            <div>
-              <img src="assets/images/product-1-720x480.jpg" alt="" class="img-fluid">
-            </div>
-            <br>
-          </div>
-          <div class="col-sm-4 col-6">
-            <div>
-              <img src="assets/images/product-2-720x480.jpg" alt="" class="img-fluid">
-            </div>
-            <br>
-          </div>
-          <div class="col-sm-4 col-6">
-            <div>
-              <img src="assets/images/product-3-720x480.jpg" alt="" class="img-fluid">
-            </div>
-            <br>
-          </div>
-
-          <div class="col-sm-4 col-6">
-            <div>
-              <img src="assets/images/product-4-720x480.jpg" alt="" class="img-fluid">
-            </div>
-            <br>
-          </div>
-          <div class="col-sm-4 col-6">
-            <div>
-              <img src="assets/images/product-5-720x480.jpg" alt="" class="img-fluid">
-            </div>
-            <br>
-          </div>
-          <div class="col-sm-4 col-6">
-            <div>
-              <img src="assets/images/product-6-720x480.jpg" alt="" class="img-fluid">
-            </div>
-            <br>
-          </div>
-        </div>
-
-        <br>
       </div>
 
       <div class="col-md-5">
@@ -84,7 +40,7 @@ $user = $session->get('user'); ?>
           </div>
 
           <div class="content">
-            <p>Available: Spring <br> - <?php echo $cafe->address ?></p>
+            <p><b>Address</b> <br><?php echo $cafe->address ?></p>
           </div>
         </div>
 
@@ -99,29 +55,15 @@ $user = $session->get('user'); ?>
           <div class="content">
             <p>
               <span>Name</span>
-
               <br>
-
-              <strong>John Smith</strong>
+              <strong><?php echo $cafe->fullname; ?></strong>
             </p>
 
             <p>
               <span>Phone</span>
-
               <br>
-
               <strong>
-                <a href="tel:123-456-789">123-456-789</a>
-              </strong>
-            </p>
-
-            <p>
-              <span>Mobile phone</span>
-
-              <br>
-
-              <strong>
-                <a href="tel:456789123">456789123</a>
+                <a href="tel:<?php echo $cafe->phone; ?>"><?php echo $cafe->phone; ?></a>
               </strong>
             </p>
 
@@ -131,7 +73,7 @@ $user = $session->get('user'); ?>
               <br>
 
               <strong>
-                <a href="mailto:john@carsales.com">john@carsales.com</a>
+                <a href="mailto:<?php echo $cafe->email ?>"><?php echo $cafe->email ?></a>
               </strong>
             </p>
           </div>
@@ -149,7 +91,7 @@ $user = $session->get('user'); ?>
   </div>
 </section>
 
-<div class="section contact-us">
+<!-- <div class="section contact-us">
   <div class="container">
     <div class="sidebar-item recent-posts">
       <div class="sidebar-heading">
@@ -321,9 +263,7 @@ $user = $session->get('user'); ?>
       </div>
     </div>
   </div>
-</div>
-
-
+</div> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -342,13 +282,13 @@ $user = $session->get('user'); ?>
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="<?= $user->username; ?>" id="paymentname" readonly></input>
+                    <input type="text" class="form-control" value="<?= $user->username; ?>" id="paymentname" readonly></input>
                   </fieldset>
                 </div>
 
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="<?= $user->email; ?>" id="paymentemail" readonly></input>
+                    <input type="text" class="form-control" value="<?= $user->email; ?>" id="paymentemail" readonly></input>
                   </fieldset>
                 </div>
               </div>
@@ -356,7 +296,7 @@ $user = $session->get('user'); ?>
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="text" class="form-control" placeholder="<?= $user->phone; ?>" id="paymentnumber" readonly></input>
+                    <input type="text" class="form-control" value="<?= $user->phone; ?>" id="paymentnumber" readonly></input>
                   </fieldset>
                 </div>
 
@@ -372,10 +312,26 @@ $user = $session->get('user'); ?>
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
-                    <input type="number" class="form-control" placeholder="Many Table" name="table" id="table" required="" min="1">
+                    <select name="table" class="form-control" placeholder="Choose your table" id="table">
+                      <?php
+                      if (count($cafe->tables) === 0) { ?>
+                        <option>No table available</option>
+                        <?php
+                      } else {
+                        foreach ($cafe->tables as $table) { ?>
+                          <option value="<?php echo $table->table_id ?>"><?php echo $table->table_name; ?></option>
+                      <?php
+                        }
+                      } ?>
+                    </select>
                   </fieldset>
                 </div>
                 <div class="col-md-6">
+                  <fieldset>
+                    <input type="number" class="form-control" placeholder="Many Table" name="qty" required min="1" max="99">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
                   <fieldset>
                     <select name="payment" class="form-control" placeholder="Payment" id="paymentmethod">
                       <option value="ovo">OVO</option>
