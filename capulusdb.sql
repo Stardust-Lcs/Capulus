@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2021 at 04:29 AM
+-- Generation Time: Jan 17, 2021 at 08:19 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -43,6 +43,8 @@ CREATE TABLE `cafes` (
 --
 
 INSERT INTO `cafes` (`cafe_id`, `name`, `address`, `photo`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('1c82b7d6-9a7b-4351-addf-7ec360db38ca', 'fff', 'Gooo', 'http://localhost:8000/uploads/TPOOpPECeixcD97Cz7zKhRblfol8JFV6.jpg', '0a48b10a-ddc4-4229-aa6b-fde7cbd609e3', '2021-01-17 06:26:32', '2021-01-17 06:26:32', NULL),
+('ae8fec89-ca7c-4174-868d-40ad84511245', 'asd', 'rahasia', 'http://localhost:8000/uploads/dsZiPwE9pguTgsY2i4deQRwFLBtAjUqz.jpg', '0a48b10a-ddc4-4229-aa6b-fde7cbd609e3', '2021-01-17 06:27:34', '2021-01-17 06:27:34', NULL),
 ('c74d3752-48fa-4d3d-999c-cc27d1ef1897', 'New Cafe', 'Babarsari, Sleman, Yogyakarta', 'https://unsplash.com/photos/tKN1WXrzQ3s', 'c74d3752-48fa-4d3d-999c-cc27d1ef4162', '2021-01-09 02:25:57', '2021-01-09 02:25:57', NULL);
 
 -- --------------------------------------------------------
@@ -53,7 +55,7 @@ INSERT INTO `cafes` (`cafe_id`, `name`, `address`, `photo`, `user_id`, `created_
 
 CREATE TABLE `orders` (
   `order_id` char(36) CHARACTER SET utf8 NOT NULL,
-  `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `order_date` text NOT NULL,
   `user_id` char(36) CHARACTER SET utf8 NOT NULL,
   `cafe_id` char(36) CHARACTER SET utf8 NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -66,7 +68,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_date`, `user_id`, `cafe_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('d74d3752-48fa-4d3d-999c-cc27d1ef1897', '2021-01-09 02:56:41', 'c74d3752-48fa-4d3d-999c-cc27d1ef4162', 'c74d3752-48fa-4d3d-999c-cc27d1ef1897', '2021-01-09 02:45:30', '2021-01-09 02:56:41', NULL);
+('97d4c37b-24ac-4404-baba-f5b950c8103b', '2021-01-20', '0a48b10a-ddc4-4229-aa6b-fde7cbd609e3', 'c74d3752-48fa-4d3d-999c-cc27d1ef1897', '2021-01-14 04:11:48', '2021-01-14 04:11:48', NULL),
+('d74d3752-48fa-4d3d-999c-cc27d1ef1897', '2021-01-09 09:56:41', 'c74d3752-48fa-4d3d-999c-cc27d1ef4162', 'c74d3752-48fa-4d3d-999c-cc27d1ef1897', '2021-01-09 02:45:30', '2021-01-09 02:56:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -90,7 +93,8 @@ CREATE TABLE `order_items` (
 CREATE TABLE `tables` (
   `table_id` char(36) CHARACTER SET utf8 NOT NULL,
   `table_name` varchar(20) NOT NULL,
-  `table_available` tinyint(1) NOT NULL,
+  `price` int(15) NOT NULL,
+  `total_table` int(5) NOT NULL,
   `cafe_id` char(36) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -118,6 +122,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `username`, `password`, `fullname`, `phone`, `is_cafe_owner`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('', 'rahasia@mail.com', 'rahasia', '$argon2id$v=19$m=65536,t=4,p=1$NzAuYy5ZTktYMm9aSzlzRQ$S0TTxq4rzu3wnJWbSXritnQLohbkZRVwhFW+1Fm8Bio', 'coba1', '85156735771', 0, '2021-01-13 15:29:30', '2021-01-13 15:29:30', NULL),
+('0a48b10a-ddc4-4229-aa6b-fde7cbd609e3', 'three@gmail.com', 'three', '$argon2id$v=19$m=65536,t=4,p=1$WUoyV21yZW1PY2VBcURUSQ$wTuUWUxa3V/lRVJQYQTEGjT5hFXZ3AtuWi2hOSzlNuo', 'third', '098412345', 1, '2021-01-14 01:47:39', '2021-01-17 00:27:34', NULL),
 ('c74d3752-48fa-4d3d-999c-cc27d1ef4162', 'example@mail.com', 'test', 'test', 'Test', '08123456789', 1, '2021-01-07 02:49:34', '2021-01-09 03:26:56', NULL);
 
 --
