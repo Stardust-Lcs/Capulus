@@ -50,6 +50,7 @@ class RegisterCafe {
 
         if ($validationMessages) {
             $session->setFlashData(['alert' => $validationMessages]);
+            // return;
             redirect_back();
         }
 
@@ -106,7 +107,8 @@ class RegisterCafe {
         }
 
         // Check file size
-        if ($_FILES[$field]["size"] > 500000) {
+        if ($_FILES[$field]["size"] > 5000000) {
+            // readable_var_dump($_FILES[$field]["size"]);
             return false;
             // return "Sorry, your file is too large.";
         }
@@ -119,11 +121,13 @@ class RegisterCafe {
             && $imageFileType !== "gif"
             && $imageFileType !== "bmp"
         ) {
+            // print "image file type";
             return false;
             // return "Sorry, only JPG, JPEG, PNG, GIF, &amp; BMP files are allowed.";
         }
 
         if (!move_uploaded_file($_FILES[$field]["tmp_name"], __ROOT__ . 'public/' . $uploadPath)) {
+            // print("unable to move");
             return false;
             // return "Sorry, there was an error uploading your file.";
         }
