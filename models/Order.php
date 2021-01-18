@@ -21,7 +21,18 @@ class Order extends Model {
     ];
     protected $table = 'orders';
 
-    public function __construct() {
-        parent::__construct();
+    public function getOrderDetail($id) {
+        $result = $this->query(
+            "SELECT orders.*, order_items.quantity, tables.table_name, tables.price 
+            FROM orders
+            INNER JOIN order_items ON orders.order_id = order_items.order_id
+            INNER JOIN tables ON order_items.table_id = tables.table_id
+            WHERE orders.order_id = '$id'
+            LIMIT 1;"
+        )->execute(true, stdClass::class);
+
+        if ($result) return $result[0];
+
+        return false;
     }
 }

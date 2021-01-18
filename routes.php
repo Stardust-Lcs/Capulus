@@ -10,8 +10,10 @@ $routes = [
     "GET /testimonials" => "Testimonials/index",
     "GET /terms" => "Terms/index",
     "GET /blog" => "Blog/index",
-    "GET /paymentDetails" => "PaymentDetails/index",
+    "POST /order" => "CafeDetails/nextOrder",
+    // "GET /paymentDetails" => "PaymentDetails/index",
     "GET /registerCafe" => "RegisterCafe/index",
+    "GET /result-order" => "ResultOrder/index",
 
     "GET /dashboard" => "Dashboard/index",
     "GET /dashboard/tables" => "TablesController/dashboard",
@@ -22,7 +24,7 @@ $routes = [
     "POST /user/register" => "Register/userRegister",
     "POST /cafe/register" => "RegisterCafe/cafeRegister",
     "POST /cafe/register/upload" => "Upload/uploadImage",
-    "POST /cafeDetails/order" => "CafeDetails/createOrder",
+    "POST /order/confirm" => "CafeDetails/createOrder",
     "POST /cafe/edit" => "YourCafe/edit",
     "POST /table/add" => "TablesController/add",
 ];

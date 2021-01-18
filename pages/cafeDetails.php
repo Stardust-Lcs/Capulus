@@ -278,7 +278,7 @@ $user = $session->get('user'); ?>
       <div class="modal-body">
         <div class="contact-us">
           <div class="contact-form">
-            <form method="POST" action="<?php echo baseURL('cafeDetails/order') ?>" id="order">
+            <form method="POST" action="<?= baseURL('order') ?>" id="order">
               <div class="row">
                 <div class="col-md-6">
                   <fieldset>
