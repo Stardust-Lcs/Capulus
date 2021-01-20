@@ -3,121 +3,36 @@
 <div class="main-banner header-text">
   <div class="container-fluid">
     <div class="owl-banner owl-carousel">
-
-      <div class="item">
-        <a href="cafeDetails">
-          <img src="assets/images2/Kafe 6.jpg" alt="" width="600" height="400">
-        </a>
-        <div class="item-content">
-
-          <div class="main-content">
-            <div class="meta-category">
-              <span> $300.00 - $400.00 </span>
-            </div>
-
-            <a href="cafeDetails">
-              <h4>Lorem ipsum dolor sit amet.</h4>
+      <?php
+      if ($bannerCafe) {
+        foreach ($bannerCafe as $banner) { ?>
+          <div class="item">
+            <a href="<?= baseURL("cafeDetails?id=$banner->cafe_id") ?>">
+              <img src="<?= $banner->photo ?>" alt="<?= $banner->name ?>" width="600" height="400">
             </a>
+            <div class="item-content">
 
-            <ul class="post-info">
-              <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
-              <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
-              <li><i class="fa fa-plane"></i> Flight included</li>
-            </ul>
-          </div>
+              <div class="main-content">
+                <!-- <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div> -->
 
-        </div>
-      </div>
-      <div class="item">
-        <a href="cafeDetails">
-          <img src="assets/images2/Kafe 2.jpg" alt="" width="600" height="400">
-        </a>
-        <div class="item-content">
+                <a href="<?= baseURL("cafeDetails?id=$banner->cafe_id") ?>">
+                  <h4><?= $banner->name ?></h4>
+                </a>
 
-          <div class="main-content">
-            <div class="meta-category">
-              <span> $300.00 - $400.00 </span>
+                <ul class="post-info">
+                  <!-- <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li> -->
+                  <li><i class="fa fa-pin"></i> <?= $banner->address ?></li>
+                </ul>
+              </div>
+
             </div>
-
-            <a href="cafeDetails">
-              <h4>Lorem ipsum dolor sit amet.</h4>
-            </a>
-
-            <ul class="post-info">
-              <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
-              <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
-              <li><i class="fa fa-plane"></i> Flight included</li>
-            </ul>
           </div>
-
-        </div>
-      </div>
-      <div class="item">
-        <a href="cafeDetails">
-          <img src="assets/images2/Kafe 3.jpg" alt="" width="600" height="400">
-        </a>
-        <div class="item-content">
-
-          <div class="main-content">
-            <div class="meta-category">
-              <span> $300.00 - $400.00 </span>
-            </div>
-
-            <a href="cafeDetails">
-              <h4>Lorem ipsum dolor sit amet.</h4>
-            </a>
-
-            <ul class="post-info">
-              <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
-              <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
-              <li><i class="fa fa-plane"></i> Flight included</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images2/Kafe 4.jpg" alt="" width="600" height="400">
-        <div class="item-content">
-
-          <div class="main-content">
-            <div class="meta-category">
-              <span> $300.00 - $400.00 </span>
-            </div>
-
-            <a href="car-details.html">
-              <h4>Lorem ipsum dolor sit amet.</h4>
-            </a>
-
-            <ul class="post-info">
-              <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
-              <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
-              <li><i class="fa fa-plane"></i> Flight included</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images2/Kafe 1.jpg" alt="" width="600" height="400">
-        <div class="item-content">
-          <div class="main-content">
-            <div class="meta-category">
-              <span> $300.00 - $400.00 </span>
-            </div>
-
-            <a href="car-details.html">
-              <h4>Lorem ipsum dolor sit amet.</h4>
-            </a>
-
-            <ul class="post-info">
-              <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
-              <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
-              <li><i class="fa fa-plane"></i> Flight included</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <?php
+        }
+      } ?>
     </div>
   </div>
 </div>
@@ -129,96 +44,54 @@
       <h2 class="text-center">Cafe</h2>
       <br>
       <div class="row">
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images2/Kafe 1.jpg" alt="" height="200">
-            </div>
-            <div class="down-content">
-              <span> Rp.10.000 - Rp.15.000 </span>
-              <a href="packagesDetails">
-                <h4>Blanco Coffee And Books</h4>
-              </a>
-              <p>Jl. Kranggan No.30, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="packagesDetails">View Package</a></li>
-                    </ul>
+        <?php
+        if ($allCafe) {
+          foreach ($allCafe as $cafe) { ?>
+            <div class="col-md-4 col-sm-6">
+              <div class="blog-post">
+                <div class="blog-thumb">
+                  <img src="<?= $cafe->photo ?>" alt="<?= $cafe->name ?>" height="200">
+                </div>
+                <div class="down-content">
+                  <!-- <span> Rp.10.000 - Rp.15.000 </span> -->
+                  <a href="<?= baseURL("cafeDetails?id=$cafe->cafe_id") ?>">
+                    <h4><?= $cafe->name ?></h4>
+                  </a>
+                  <p><?= $cafe->address ?></p>
+                  <div class="post-options">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <ul class="post-tags">
+                          <li><i class="fa fa-bullseye"></i></li>
+                          <li><a href="<?= baseURL("cafeDetails?id=$cafe->cafe_id") ?>">Order Here</a></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images2/Kafe 2.jpg" alt="" height="200">
-            </div>
-            <div class="down-content">
-              <span> Rp.10.000 - Rp.12.000 </span>
-              <a href="packagesDetails">
-                <h4>TUJUAN</h4>
-              </a>
-              <p>Tirtodipuran St No.17C, Mantrijeron, Yogyakarta City, Special Region of Yogyakarta 55143.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="packageDetails">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="blog-post">
-            <div class="blog-thumb">
-              <img src="assets/images2/Kafe 3.jpg" alt="" height="200">
-            </div>
-            <div class="down-content">
-              <span> Rp.10.000 - Rp.12.000 </span>
-              <a href="packagesDetails">
-                <h4>Tanamera Coffee & Roastery Yogyakarta</h4>
-              </a>
-              <p>Jl. Jend. Sudirman No.3, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233.</p>
-              <div class="post-options">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <ul class="post-tags">
-                      <li><i class="fa fa-bullseye"></i></li>
-                      <li><a href="packageDetails">View Package</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php
+          }
+        } ?>
       </div>
     </div>
   </div>
   <!-- Tombol Load More -->
-  <br>
-  <br>
-  <div class="row justify-content-md-center">
+  <!-- <br>
+  <br> -->
+  <!-- <div class="row justify-content-md-center">
     <div class="col-md-3">
       <div class="main-button">
         <a href="packages">Load More</a>
       </div>
     </div>
-  </div>
+  </div> -->
   </div>
   </div>
 </section>
 
-<section class="call-to-action">
+<!-- <section class="call-to-action">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -238,9 +111,9 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="blog-posts grid-system">
+<!-- <section class="blog-posts grid-system">
   <div class="container">
     <div class="all-blog-posts">
       <h2 class="text-center">Blog</h2>
@@ -310,7 +183,7 @@
     </div>
   </div>
   <br>
-  <!-- Tombol Load More -->
+  Tombol Load More
   <div class="row justify-content-md-center">
     <div class="col-md-3">
       <div class="main-button">
@@ -320,4 +193,4 @@
   </div>
   </div>
   </div>
-</section>
+</section> -->

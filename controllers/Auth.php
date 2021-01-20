@@ -18,14 +18,14 @@ class Auth {
                     'username',
                     'password',
                     'is_cafe_owner'
-                ], "email = '$email'");
+                ], "email = '$email' OR username = '$email'");
                 // readable_var_dump($row);
                 if ($row) {
                     if (password_verify($pass, $row[0]->password)) {
                         $session->set('user_id', $row[0]->user_id);
                         $session->set('username', $row[0]->username);
                         $user_detail = new User();
-                        $user_detail = $user_detail->get([], "email = '$email'", 1);
+                        $user_detail = $user_detail->get([], "email = '$email' OR username = '$email'", 1);
                         $session->set('user', $user_detail[0]);
                         // readable_var_dump($user_detail);
                         if ($row[0]->is_cafe_owner) {

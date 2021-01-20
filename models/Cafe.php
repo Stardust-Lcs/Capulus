@@ -32,6 +32,12 @@ class Cafe extends Model {
     }
 
     public function checkId($id) {
-        return $this->query("SELECT 1 FROM cafes WHERE cafe_id = '$id'")->execute();
+        $res = $this->query("SELECT 1 FROM cafes WHERE cafe_id = '$id'")->execute();
+        return $res ? true : false;
+    }
+
+    public function checkUserId($id) {
+        $res = $this->query("SELECT 1 FROM cafes WHERE user_id = '$id'")->execute(true);
+        return $res ? true : false;
     }
 }

@@ -37,7 +37,7 @@ class TablesController {
 
         $table = new Table();
         $tables = $table->getAllUserCafeTables($_GET['id']);
-        readable_var_dump($table->getLastQuery());
+        // readable_var_dump($table->getLastQuery());
 
         View::load('dashboard/tables', [
             'alert' => $alert,

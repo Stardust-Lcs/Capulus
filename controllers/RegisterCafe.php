@@ -32,22 +32,29 @@ class RegisterCafe {
 
         $validationMessages = [];
         if (empty($_POST)) redirect_back();
-        if (!isset($_POST['name'])) {
-            $validationMessages['name'] = 'Name is required!';
-        }
-        if (!isset($_POST['address'])) {
-            $validationMessages['address'] = 'Address is required!';
-        }
-        if (!isset($_FILES['photo'])) {
-            $validationMessages['photo'] = "Photo is required";
+        $userId = $session->get('user_id');
+        $check = (new Cafe())->checkUserId($userId);
+        readable_var_dump($check);
+        if ($check) {
+            $validationMessages['notAllowed'] = 'Sorry, you already registered your cafe.';
         } else {
-            $path = $this->uploadImage('photo');
-
-            if (!$path) {
-                $validationMessages['photo'] = "Sorry, we're unable to upload your photo.";
+            if (!isset($_POST['name'])) {
+                $validationMessages['name'] = 'Name is required!';
             }
+            if (!isset($_POST['address'])) {
+                $validationMessages['address'] = 'Address is required!';
+            }
+            if (!isset($_FILES['photo'])) {
+                $validationMessages['photo'] = "Photo is required";
+            } else {
+                $path = $this->uploadImage('photo');
 
-            unset($_FILES['photo']);
+                if (!$path) {
+                    $validationMessages['photo'] = "Sorry, we're unable to upload your photo.";
+                }
+
+                unset($_FILES['photo']);
+            }
         }
 
         if ($validationMessages) {

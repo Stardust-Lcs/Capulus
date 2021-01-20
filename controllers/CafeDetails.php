@@ -59,7 +59,7 @@ class CafeDetails {
         $quantity = htmlentities($_POST['qty'], ENT_QUOTES);
 
         $table = new Table();
-        $tables = $table->get(['table_name', 'price'], "table_id = '$table_id'", 1);
+        $tables = $table->get(['table_name', 'price', 'total_table'], "table_id = '$table_id'", 1);
         // readable_var_dump($tables);
         if (!$tables) Response::Error404();
 
@@ -67,6 +67,9 @@ class CafeDetails {
         $cafes = $cafe->get(['name', 'address'], "cafe_id = '$cafe_id'", 1);
         // readable_var_dump($cafes);
         if (!$cafes) Response::Error404();
+
+        if ($quantity > $tables[0]->total_table)
+            $quantity = $tables[0]->total_table;
 
         View::load('order', [
             'date' => $date,
@@ -128,11 +131,15 @@ class CafeDetails {
         $orderItems->table_id = $table_id;
         $orderItems->quantity = $quantity;
 
-        $insert = $order->insert() && $orderItems->insert();
-
-        if ($insert) {
-            $session->setFlashData(['success' => 'Order Created']);
-            redirect(baseURL('result-order'));
+        $table = (new Table())->get([], "table_id = '$table_id'", 1);
+        if ($table) {
+            $table = $table[0];
+            $table->total_table = $table->total_table - $quantity;
+            $trx = $order->insert() && $orderItems->insert() && $table->update();
+            if ($trx) {
+                $session->setFlashData(['success' => 'Order Created']);
+                redirect(baseURL('result-order'));
+            }
         }
 
         $session->setFlashData(['alert' => 'Failed to create order']);
